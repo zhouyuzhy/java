@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config carrier="" isp="CTC">
+	<servers version="219">
+		<ssi-app-sign-in-v2>https://uid.fetion.com.cn/ssiportal/SSIAppSignInV4.aspx</ssi-app-sign-in-v2>
+		<get-pic-code>http://nav.fetion.com.cn/nav/GetPicCodeV4.aspx</get-pic-code>
+		<email-delaysub-time>60</email-delaysub-time>
+		<multiple-transfer>{CMC|221.176.30.245:8080,443;CTC|115.181.16.225:8080,443;CUC|125.39.170.162:8080,443;CEN|42.247.5.114:8080,443}{CMC|221.176.30.246:8080,443;CTC|115.181.16.226:8080,443;CUC|125.39.170.163:8080,443;CEN|42.247.5.115:8080,443}</multiple-transfer>
+		<multiple-stun>{CMC|221.176.30.245:8080;CTC|115.181.16.225:8080;CUC|125.39.170.162:8080;CEN|42.247.5.114:8080}{CMC|221.176.30.246:8080;CTC|115.181.16.226:8080;CUC|125.39.170.163:8080;CEN|42.247.5.115:8080}</multiple-stun>
+		<multiple-httptransfer>{CMC|221.176.30.245:80;CTC|115.181.16.225:80;CUC|125.39.170.162:80;CEN|42.247.5.114:80}{CMC|221.176.30.246:80;CTC|115.181.16.226:80;CUC|125.39.170.163:80;CEN|42.247.5.115:80}</multiple-httptransfer>
+		<send-sms-pwd>http://nav.fetion.com.cn/nav/SendSmsPwd.aspx</send-sms-pwd>
+		<sub-service>https://nav.fetion.com.cn/nav/Subscribe.aspx</sub-service>
+		<ssi-app-sign-in>https://uid.fetion.com.cn/ssiportal/SSIAppSignInV2.aspx</ssi-app-sign-in>
+		<ssi-app-sign-out>http://ssi.fetion.com.cn/ssiportal/SSIAppSignOut.aspx</ssi-app-sign-out>
+		<stun-urls>stunserver.org:3478</stun-urls>
+		<password-strength>L:6,16;T:ULDS,2;</password-strength>
+		<minipage-autoopen-time>100</minipage-autoopen-time>
+		<offline-file-server>{CMC|221.176.31.185:80;CTC|115.181.17.243:80;CUC|125.39.170.11:80;CEN|42.247.5.13:80}{CMC|221.176.31.186:80;CTC|115.181.17.244:80;CUC|125.39.170.12:80;CEN|42.247.5.14:80}</offline-file-server>
+		<sms-distc-ability>false</sms-distc-ability>
+		<password-strength2>L:8,16;T:D,1;|L:6,16;T:ULS,1;|L:6,16;T:ULDS,2;</password-strength2>
+		<j2me-adapter></j2me-adapter>
+		<apply-sub-service>http://nav.fetion.com.cn/nav/ApplySubscribe.aspx</apply-sub-service>
+		<get-system-status>http://nav.fetion.com.cn/nav/GetSystemStatus.aspx</get-system-status>
+		<get-general-info>http://nav.fetion.com.cn/nav/GeneralGetInfo.aspx</get-general-info>
+		<get-uri>http://hdss1fta.fetion.com.cn/HDS_S00/geturi.aspx</get-uri>
+		<get-svc-order-status>http://nav.fetion.com.cn/nav/GetSvcOrderStatus.aspx</get-svc-order-status>
+		<matching-portal></matching-portal>
+		<crbt-portal>http://221.130.46.134/crbt/default.aspx</crbt-portal>
+		<update-pwd>https://nav.fetion.com.cn/nav/UpdatePwd.aspx</update-pwd>
+		<group-category>http://nav.fetion.com.cn/nav/GetGroupCategory.aspx</group-category>
+		<group-website>http://group.feixin.10086.cn/space/index/{0}</group-website>
+		<smartphone-adapter>221.176.31.165:8080</smartphone-adapter>
+		<wap-client-sign-in>http://ssi.fetion.com.cn/ssiportal/SSIWapClientSignIn.aspx</wap-client-sign-in>
+		<server-caps>simple-im;im-session;temp-group;poc;personal-group</server-caps>
+		<server-version>2.5.8.0531</server-version>
+		<email-adapter>http://221.130.45.215/EmailAdapter/</email-adapter>
+		<feike-user-home-url>http://feike.fetion.com.cn/myfriend?sid={0}&amp;c=[c:m161.com.cn]</feike-user-home-url>
+	</servers>
+	<service-no version="116">
+		<mms></mms>
+		<rbt>12530</rbt>
+		<ivr>12520</ivr>
+	</service-no>
+	<parameters version="153">
+		<max-sms-superadmin-count>2</max-sms-superadmin-count>
+		<max-sms-joingroup-count>4</max-sms-joingroup-count>
+		<max-sms-join-member-count>9</max-sms-join-member-count>
+		<pconline-max-msg-length>4000</pconline-max-msg-length>
+		<vip-batch-sms-max-receivers>200</vip-batch-sms-max-receivers>
+		<fetion_doctor_disabled>true</fetion_doctor_disabled>
+		<group-message-length>400</group-message-length>
+		<max-share-content-size>10485760</max-share-content-size>
+		<xeno-im-lifetime>1800</xeno-im-lifetime>
+		<batch-sms-max-receivers>100</batch-sms-max-receivers>
+		<liteuser-freesms-count>10</liteuser-freesms-count>
+		<batch-directsms-max-receivers>50</batch-directsms-max-receivers>
+		<group-sms-length>350</group-sms-length>
+		<group-sms-point>该功能暂停使用</group-sms-point>
+		<max-msg-length>400</max-msg-length>
+		<max-sms-length>350</max-sms-length>
+		<max-msg-convert-sms>3</max-msg-convert-sms>
+		<max-sms-unicode>70</max-sms-unicode>
+		<max-ivr-participants>8</max-ivr-participants>
+		<ivr-invite-timeout>60</ivr-invite-timeout>
+		<portrait-file-type>image/pjpeg;image/jpeg;image/bmp;image/x-windows-bmp;image/png;image/gif</portrait-file-type>
+		<forbidden-share-content-type>bat;chm;cmd;exe;hlp;htm;html;js;msi;reg;scr;vbs;chk;jar;com;pif;vbe;wsh;wsf;dll</forbidden-share-content-type>
+		<offline-max-share-content-size>2048000</offline-max-share-content-size>
+		<temp-group-max-share-content-size>2048000</temp-group-max-share-content-size>
+		<single-sms-max-length>70</single-sms-max-length>
+		<groupcategory-version>1</groupcategory-version>
+		<max-superadmin-count>4</max-superadmin-count>
+		<max-joingroup-count>20</max-joingroup-count>
+		<max-groupadmin-count>3</max-groupadmin-count>
+		<max-groupuser-count>200</max-groupuser-count>
+		<max-daily-sms-time>10</max-daily-sms-time>
+		<max-month-sms-time>31</max-month-sms-time>
+		<searchgroup-pagesize>10</searchgroup-pagesize>
+		<score-config>
+			<level value="0" score="0" />
+			<level value="1" score="150" />
+			<level value="2" score="400" />
+			<level value="3" score="750" />
+			<level value="4" score="1200" />
+			<level value="5" score="1750" />
+			<level value="6" score="2400" />
+			<level value="7" score="3150" />
+			<level value="8" score="4000" />
+			<level value="9" score="4950" />
+			<level value="10" score="6000" />
+			<level value="11" score="7150" />
+			<level value="12" score="8400" />
+			<level value="13" score="9750" />
+			<level value="14" score="11200" />
+			<level value="15" score="12750" />
+			<level value="16" score="14400" />
+			<level value="17" score="16150" />
+			<level value="18" score="18000" />
+			<level value="19" score="19950" />
+			<level value="20" score="22000" />
+			<level value="21" score="24150" />
+			<level value="22" score="26400" />
+			<level value="23" score="28750" />
+			<level value="24" score="31200" />
+			<level value="25" score="33750" />
+			<level value="26" score="36400" />
+			<level value="27" score="39150" />
+		</score-config>
+		<max-emotion-pic-size>1048576</max-emotion-pic-size>
+		<max-emotion-pic-rect>9999*9999</max-emotion-pic-rect>
+		<max-voice-clip-size>204800</max-voice-clip-size>
+		<max-joingroup-invite-count>32</max-joingroup-invite-count>
+		<voice-clip-encoding>amr515;pcm</voice-clip-encoding>
+		<max-blacklist>150</max-blacklist>
+		<max-buddies>500</max-buddies>
+		<max-buddy-list>50</max-buddy-list>
+		<max-chat-buddies>20</max-chat-buddies>
+		<max-vip-groupuser-count>300</max-vip-groupuser-count>
+		<max-discussgroup-user-count>32</max-discussgroup-user-count>
+		<max-join-discussgroup-count>30</max-join-discussgroup-count>
+		<discussgroup-msg-max-length>400</discussgroup-msg-max-length>
+	</parameters>
+	<hints version="124">
+		<close-service>飞信服务已被关闭。&lt;br&gt;如果您需要重新开通飞信请发送KTFX到10086或者&lt;font
+			size=9 color=0x1E90FF&gt;&lt;a
+			href=&quot;https://feixin.10086.cn/account/register&quot;&gt;登录&lt;/a&gt;&lt;/font&gt;飞信官网重新注册。</close-service>
+		<addbuddy-phrases>
+			<phrase id="0">正在用中国移动飞信业务，想加你为好友。</phrase>
+			<phrase id="1">想加你为飞信好友，方便咱们联系。</phrase>
+			<phrase id="2">飞信挺好用的，我想加你为好友。</phrase>
+			<phrase id="3">希望你成为我的飞信好友，常联系。</phrase>
+			<phrase id="4">成为我的飞信好友，能免费给你发短信。</phrase>
+		</addbuddy-phrases>
+		<i-not-online>您当前的状态设置为“{0}”</i-not-online>
+		<i-not-log-on>您没有登录，不能发送消息</i-not-log-on>
+		<user-in-blacklist>对方在您的黑名单中，您不能和他会话</user-in-blacklist>
+		<participants-not-online>一些参与者可能无法及时回复您的消息</participants-not-online>
+		<user-offline>{0}已离线，不能立即收到您的消息。 您发送的消息将被保存下来并延迟发送。</user-offline>
+		<user-sms-status>{0}没有登录，您的消息将会以短信发送到对方的手机。每条消息最多{1}个字符，根据您输入的内容长度，消息可能会被拆为2～{2}条短信。</user-sms-status>
+		<user-busy>{0}可能无法及时回复您的消息，因为{1}的状态为{2}。</user-busy>
+	</hints>
+	<http-applications version="169">
+		<multiple-check-grouppic-url>{CMC|http://221.176.30.199:80/imgweb/check;CUC|http://125.39.170.19:80/imgweb/check;CTC|http://115.181.16.82:80/imgweb/check;CEN|http://42.247.5.28:80/imgweb/check}</multiple-check-grouppic-url>
+		<multiple-download-grouppic-url>{CMC|http://221.176.30.199:80/imgweb/download;CUC|http://125.39.170.19:80/imgweb/download;CTC|http://115.181.16.82:80/imgweb/download;CEN|http://42.247.5.28:80/imgweb/download}</multiple-download-grouppic-url>
+		<multiple-upload-grouppic-url>{CMC|http://221.176.30.199:80/imgweb/upload;CUC|http://125.39.170.19:80/imgweb/upload;CTC|http://115.181.16.82:80/imgweb/upload;CEN|http://42.247.5.28:80/imgweb/upload}</multiple-upload-grouppic-url>
+		<get-contact-blog-info>http://tips.fetion.com.cn/friend/{0}</get-contact-blog-info>
+		<get-personal-blog-info>http://tips.fetion.com.cn/user/{0}</get-personal-blog-info>
+		<upload-pccrash-url>http://221.130.45.204/pccc/UploadCrashData.aspx</upload-pccrash-url>
+		<inform-xenoim-url>http://221.130.45.204/ComplainAdapter/InformXenoIm.aspx</inform-xenoim-url>
+		<get-rtm-config-url>http://nav.fetion.com.cn/nav/GetRtmConfig.aspx</get-rtm-config-url>
+		<get-feiptactic-url>http://221.176.28.136/feip</get-feiptactic-url>
+		<upload-feipdata-url>http://221.176.28.136/feip</upload-feipdata-url>
+		<complain-info-url>http://221.130.45.204/ComplainAdapter/</complain-info-url>
+		<weather-info-url>http://221.176.31.204/GWS/</weather-info-url>
+		<get-addressbook-config>http://nav.fetion.com.cn/nav/GetAddressBookConfig.aspx</get-addressbook-config>
+		<phoenix-info-url>http://f.10086.cn/client/channelIndex.xml</phoenix-info-url>
+		<mda-mms-url>http://fetionmmsc.mda139.com/index.aspx</mda-mms-url>
+		<alv2-syncdata-url>http://221.176.31.142/ALP/SyncML.ashx</alv2-syncdata-url>
+		<alv2-backup-list-url>http://221.176.31.142/ALP/getbackups.ashx</alv2-backup-list-url>
+		<alv2-backup-get-url>http://221.176.31.142/ALP/getbackup.ashx</alv2-backup-get-url>
+		<get-usersms-code>http://hdss1fta.fetion.com.cn/HDS_S00/GetUserSmsCodeV4.aspx</get-usersms-code>
+		<history-portrait>http://hdss1fta.fetion.com.cn/HDS_S00/GetHistoryPortrait.aspx</history-portrait>
+		<al-getgrouplist-url>http://221.176.31.142/ALP/getgrouplist.ashx</al-getgrouplist-url>
+		<al-editgroup-url>http://221.176.31.142/ALP/editgroup.ashx</al-editgroup-url>
+	</http-applications>
+	<client-config version="339">
+		<item key="smsgroup-help-url" value="http://muzhiqun.feixin.10086.cn/?fromUrl=pc" />
+		<item key="directsms-feedesc-url" value="http://feixin.10086.cn/help/faq/862/2/266" />
+		<item key="ivr-charge-url" value="http://feixin.10086.cn/service/faqinfo/586" />
+		<item key="more-emotion-url"
+			value="http://feixin.10086.cn/download/emotion/?c=[c:m161.com.cn]" />
+		<item key="myspace-index-url"
+			value="http://i.feixin.10086.cn?utm_source=fetion&amp;utm_medium=space_khd_upbutton&amp;utm_campaign=space&amp;c=[c:m161.com.cn]" />
+		<item key="vip-index-url"
+			value="http://vip.feixin.10086.cn/?utm_source=fetion&amp;utm_medium=vip_khd_upbutton&amp;utm_campaign=vip&amp;c=[c:m161.com.cn]" />
+		<item key="haoma-index-url"
+			value="http://haoma.feixin.10086.cn/?utm_source=fetion&amp;utm_medium=haoma_khd_upbutton&amp;utm_campaign=haoma&amp;c=[c:m161.com.cn]" />
+		<item key="get-quests-url" value="" />
+		<item key="goto-quests-url"
+			value="http://my.fetion.com.cn/service/gotask?c=[c:m161.com.cn]" />
+		<item key="dynamic-setting-url"
+			value="http://i.feixin.10086.cn/v1notification/pcsendfeedset?c=[c:m161.com.cn]" />
+		<item key="dynamic-refresh-time" value="300" />
+		<item key="space-resource-version" value="17" />
+		<item key="space-resource-url" value="http://download.fetion-portal.com/client/17/space.zip" />
+		<item key="dynamic-info-url"
+			value="http://i.feixin.10086.cn/feedclient/ub/notify/activitynotify?c=[c:m161.com.cn]&amp;v=[ver]" />
+		<item key="dynamic-tips-time" value="30" />
+		<item key="c-url"
+			value="http://221.179.198.66/fetionmap/login?c=[c:pos.fetion.com.cn]" />
+		<item key="presetrobot-nav-url"
+			value="http://221.176.31.145/GetRobotInfo.ashx?c=[c:m161.com.cn]&amp;v={0}" />
+		<item key="potential-buddy-url"
+			value="http://space3.feixin.10086.cn/client/clientrecommend?c=[c:m161.com.cn]" />
+		<item key="enable-potential-buddy" value="1" />
+		<item key="dynamic-reply-url"
+			value="http://space3.feixin.10086.cn/tab/microblog?c=[c:m161.com.cn]" />
+		<item key="get-activity-url"
+			value="http://i.feixin.10086.cn/feedclient/ub/gettalkfeed?c=[c:m161.com.cn]" />
+		<item key="scoretosms-url"
+			value="http://jifen.feixin.10086.cn/detailno/smsclient/CN..html?c=[c:m161.com.cn]" />
+		<item key="fetionshow-url"
+			value="http://show.fetion.com.cn/kuvatarnew/imlogin?c=[c:www.ikuwa.cn]" />
+		<item key="group-album-url"
+			value="http://group.feixin.10086.cn/picture/index/{0}/?c=[c:m161.com.cn]" />
+		<item key="vip-show-url"
+			value="http://vip.feixin.10086.cn/freedom/xiu?c=[c:m161.com.cn]" />
+		<item key="extended-config-url"
+			value="http://download.fetion-portal.com/NAV/exmodule.20130130.zip" />
+		<item key="extended-config-version" value="20130130" />
+		<item key="weather-nav-url" value="http://feixin.10086.cn/weather/?c=[c:m161.com.cn]" />
+		<item key="info-post-redirect-url" value="http://fetionmmsc.mda139.com/domms1.aspx" />
+		<item key="get-bossbuddy-url"
+			value="http://wds.fetiononline.com/service/pc/getbossbuddylist?c=[c:m161.com.cn]" />
+		<item key="add-bossbuddynotify-url"
+			value="http://wds.fetiononline.com/service/pc/addbossbuddynotify?c=[c:m161.com.cn]" />
+		<item key="smslibrary-url"
+			value="http://sms.feixin.10086.cn/index.php?m=Space&amp;a=indexpc&amp;c=[c:m161.com.cn]" />
+		<item key="get-spacetip-url"
+			value="http://i.feixin.10086.cn/feedclient/ub/notify?c=[c:m161.com.cn]&amp;userid=" />
+		<item key="bind-account-email"
+			value="http://my.feixin.10086.cn/mail/index?c=[c:m161.com.cn]" />
+		<item key="get-empire-url"
+			value="http://achv.fetiononline.com/pc/achvlist?c=[c:m161.com.cn]&amp;userid=" />
+		<item key="mobile-client-url"
+			value="http://feixin.10086.cn/download/mobileclient/mobilemodel?utm_source=PC&amp;utm_medium=sj_download_link&amp;utm_campaign=duihuakuang" />
+		<item key="show-recommend-bud" value="True" />
+		<item key="web-client-url"
+			value="https://webim.feixin.10086.cn/?utm_source=fetion&amp;utm_medium=webim_webfeixin&amp;utm_campaign=webim" />
+		<item key="PCBehaviorURL" value="https://221.176.31.177/dap/recvdata.da" />
+		<item key="PCBehaviorFrequency" value="24" />
+		<item key="PCErrorURL" value="https://221.176.31.177/dap/recvdata.da" />
+		<item key="PCErrorFrequency" value="24" />
+		<item key="recommend-left-url"
+			value="http://space3.feixin.10086.cn/client/clientrecommendleft?c=[c:m161.com.cn]" />
+		<item key="dynamic-tips-url"
+			value="http://space3.feixin.10086.cn/client/getclientminifeedtips?c=[c:m161.com.cn]&amp;userid={0}&amp;feedId={1}" />
+		<item key="dynamic-be-important" value="72" />
+		<item key="fetion-download-url" value="http://feixin.10086.cn/download/pcclient/" />
+		<item key="mobile-no-dist-cucc"
+			value="&lt;r&gt;&lt;c v=&quot;cucc&quot;&gt;&lt;d s=&quot;13000000000&quot; e=&quot;13099999999&quot;/&gt;&lt;d s=&quot;13100000000&quot; e=&quot;13199999999&quot;/&gt;&lt;d s=&quot;13200000000&quot; e=&quot;13299999999&quot;/&gt;&lt;d s=&quot;15500000000&quot; e=&quot;15599999999&quot;/&gt;&lt;d s=&quot;15600000000&quot; e=&quot;15699999999&quot;/&gt;&lt;d s=&quot;18600000000&quot; e=&quot;18699999999&quot;/&gt;&lt;/c&gt;&lt;/r&gt;" />
+		<item key="mobile-no-dist-ct"
+			value="&lt;r&gt;&lt;c v=&quot;ct&quot;&gt;&lt;d s=&quot;13300000000&quot; e=&quot;13399999999&quot;/&gt;&lt;d s=&quot;15300000000&quot; e=&quot;15399999999&quot;/&gt;&lt;d s=&quot;18000000000&quot; e=&quot;18099999999&quot;/&gt;&lt;d s=&quot;18100000000&quot; e=&quot;18199999999&quot;/&gt;&lt;d s=&quot;18900000000&quot; e=&quot;18999999999&quot;/&gt;&lt;/c&gt;&lt;/r&gt;" />
+		<item key="sms-distc-charge-cm-cu" value="0.1元/条" />
+		<item key="sms-distc-charge-cm-ct" value="0.1元/条" />
+		<item key="complain-feedback-url"
+			value="http://safe.feixin.10086.cn/Account/ReportList?c=[c:m161.com.cn]" />
+		<item key="set-login-place-url"
+			value="http://safe.feixin.10086.cn/Account/LoginRegion?c=[c:m161.com.cn]" />
+		<item key="login-help-url" value="http://feixin.10086.cn/service/faqinfo/1227" />
+		<item key="operation-msg"
+			value="&lt;Biz-Msgs&gt;&lt;msg id=&quot;2003&quot; type=&quot;2&quot; level=&quot;1&quot; text=&quot; &quot; helpInfo=&quot;&quot; bkcolor=&quot;&quot; rule=&quot;&quot; start=&quot;&quot; end=&quot;&quot; dead=&quot;&quot;&gt;&lt;/msg&gt;&lt;/Biz-Msgs&gt;" />
+		<item key="appbox-config-url"
+			value="http://download.fetion-portal.com/NAV/appbox1009_442.zip" />
+		<item key="mobileclient-msg-suffix" value="（使用电脑登录飞信，更多功能更精彩）" />
+		<item key="mobileclient-pic-msg-suffix" value="（使用电脑登录飞信，聊天图片随意收发）" />
+		<item key="wapclient-msg-suffix" value="（使用电脑登录飞信，更多功能更精彩）" />
+		<item key="wapclient-pic-msg-suffix" value="（使用电脑登录飞信，聊天图片随意收发）" />
+		<item key="get-bossbuddy-server-url"
+			value="http://115.181.17.200/RUSWEB/GetPCBossBuddyList.aspx?c=[c:fetion.com.cn]&amp;count={0}&amp;page={1}" />
+		<item key="add-bossbuddynotify-server-url"
+			value="http://115.181.17.200/RUSWEB/addbossbuddynotify.aspx?c=[c:fetion.com.cn]&amp;userid={0}" />
+		<item key="get-schedulemanager-server-url" value="http://115.181.17.200/RUSWEB/scheduleManager.png" />
+		<item key="pcmac-downloadurl" value="http://download.feixin.10086.cn/pc/mac.html" />
+		<item key="pcmac-version" value="v1.4.5" />
+		<item key="no-responsibility-declaration-url"
+			value="http://nav.fetion.com.cn/nav/group-no-responsibility-declaration.txt" />
+		<item key="sms-mode-main-desc" value="您可以发送短信与好友进行交流、使用语音聊天，还可以邀请您的手机好友加入Fetion服务" />
+		<item key="sms-mode-invite-buddy" value="hy" />
+		<item key="sms-mode-invite-ivr" value="yy" />
+		<item key="sms-mode-no-contact-list" value="目前您还没有好友，可以通过登录后邀请，获取好友或将手机通讯簿的联系人导入为Fetion好友" />
+		<item key="online-no-buddies" value="目前您还没有好友，可以通过菜单中的导入手机联系人、速配交友、用飞信号和手机号添加好友的方式来添加好友。" />
+		<item key="online-garden-desc" value="" />
+		<item key="mobile-no-dist"
+			value="&lt;r&gt;&lt;c v=&quot;cmcc&quot;&gt;&lt;d s=&quot;13500000000&quot; e=&quot;13999999999&quot;/&gt;&lt;d s=&quot;13400000000&quot; e=&quot;13489999999&quot;/&gt;&lt;d s=&quot;15900000000&quot; e=&quot;15999999999&quot;/&gt;&lt;d s=&quot;15800000000&quot; e=&quot;15899999999&quot;/&gt;&lt;d s=&quot;15700000000&quot; e=&quot;15799999999&quot;/&gt;&lt;d s=&quot;15100000000&quot; e=&quot;15199999999&quot;/&gt;&lt;d s=&quot;15200000000&quot; e=&quot;15299999999&quot;/&gt;&lt;d s=&quot;14700000000&quot; e=&quot;14799999999&quot;/&gt;&lt;d s=&quot;15000000000&quot; e=&quot;15099999999&quot;/&gt;&lt;d s=&quot;18200000000&quot; e=&quot;18299999999&quot;/&gt;&lt;d s=&quot;18300000000&quot; e=&quot;18399999999&quot;/&gt;&lt;d s=&quot;18700000000&quot; e=&quot;18799999999&quot;/&gt;&lt;d s=&quot;18800000000&quot; e=&quot;18899999999&quot;/&gt;&lt;/c&gt;&lt;/r&gt;" />
+		<item key="fee-charge-desc-url" value="http://www.fetion.com.cn/shuoming1.aspx" />
+		<item key="ivr-charge-desc" value="资费请咨询当地10086" />
+		<item key="info-redirect-url"
+			value="https://uid.fetion.com.cn/SSIPortal/Redirect.aspx?key=" />
+		<item key="sysmsg-daily-display-count" value="3" />
+		<item key="group-meaning-url" value="http://feixin.10086.cn/service/faqinfo/861" />
+		<item key="how-to-create-group-url" value="http://feixin.10086.cn/service/faqinfo/818" />
+		<item key="how-to-find-group-url" value="http://feixin.10086.cn/service/faqinfo/826" />
+		<item key="score-faq-url" value="http://jifen.feixin.10086.cn/?c=[c:m161.com.cn]" />
+		<item key="group-hot-intro-url" value="http://feixin.10086.cn/service/faqinfo/873" />
+		<item key="enable-my-location" value="0" />
+		<item key="my-location-url" value="http://gg.joytod.com:8080/fetion/aroundme.html" />
+		<item key="minipage-url"
+			value="http://client.feixin.10086.cn/minisite/redirect?c=[c:m161.com.cn]" />
+		<item key="bind-mobileoremail-url" value="http://my.feixin.10086.cn/cancel/index?sid={0}" />
+		<item key="bind-mobile-url"
+			value="http://my.feixin.10086.cn/changemobile/inputvalidatecode?c=[c:m161.com.cn]" />
+		<item key="query-pwd-question-url" value="http://my.feixin.10086.cn/security/?c=[c:m161.com.cn]" />
+		<item key="set-pwd-question-url"
+			value="http://my.feixin.10086.cn/security/setquestion?c=[c:m161.com.cn]" />
+		<item key="get-pwd-url" value="http://my.feixin.10086.cn/password/find" />
+		<item key="lite-user-register-url" value="https://feixin.10086.cn/account/registermail" />
+		<item key="update-pwd-url"
+			value="http://my.feixin.10086.cn/password/validateguide?c=[c:m161.com.cn]" />
+		<item key="switch-pwd-cache-url"
+			value="http://ssi.fetion.com.cn/ssiportal/SwitchPwdCache.aspx" />
+		<item key="group-create-topic-url"
+			value="http://group.feixin.10086.cn/topic/createcommon/{0}?c=[c:m161.com.cn]" />
+		<item key="addresslist-help-url" value="http://feixin.10086.cn/help/faq/615/2/211" />
+		<item key="enable-game-toolbar" value="1" />
+		<item key="restricted-user-detail-url" value="http://feixin.10086.cn/safe/item/28/" />
+		<item key="nocm-register-url"
+			value="https://feixin.10086.cn/account/registermailfrompcclient" />
+		<item key="nocm-emailcheck-url"
+			value="https://feixin.10086.cn/account/registermailcheckfrompcclient" />
+		<item key="offline-file-notify" value="我给你发送了离线文件，请在7天内登录飞信2011春露以上版本接收一下。" />
+		<item key="friends-impressions-tips-url"
+			value="http://i.feixin.10086.cn/app/impression/pc/tip?userid={0}&amp;c=[c:m161.com.cn]" />
+		<item key="friends-impressions-url"
+			value="http://i.feixin.10086.cn/app/impression/pc/list?userid={0}&amp;c=[c:m161.com.cn]" />
+		<item key="birthday-bless-url"
+			value="http://space3.feixin.10086.cn/birthday/gift?fid={0}&amp;c=[c:m161.com.cn]" />
+		<item key="my_space_gift_url"
+			value="http://space3.feixin.10086.cn/app/appplay/gift/receive?c=[c:m161.com.cn]" />
+		<item key="offline-file-expired" value="7" />
+		<item key="fei-yu-url" value="http://i.feixin.10086.cn/{0}?c=[c:m161.com.cn]" />
+		<item key="space-openplat-url" value="http://app.api.fetion.com.cn/service" />
+		<item key="mood-word-limit" value="140" />
+		<item key="offline-file-notify-new" value="我给你发送了离线文件{0}，请在7天内登录飞信2011春露以上版本接收一下。" />
+		<item key="recommend-buddy-reason"
+			value="&lt;recommend-reason&gt;&lt;reason name=&quot;recent-contact&quot; value=&quot;您近期可能联系过TA&quot; brief=&quot;可能联系过TA&quot;/&gt;&lt;reason name=&quot;have-same-friend&quot; value=&quot;你们有{0}位共同好友&quot; brief=&quot;{0}位共同好友&quot;/&gt;&lt;reason name=&quot;want-to-meet&quot; value=&quot;TA可能是您想结识的人&quot; brief=&quot;可能想结识TA&quot;/&gt;&lt;reason name=&quot;from-sns&quot; value=&quot;TA是您{0}的朋友&quot; brief=&quot;您{0}的朋友&quot;/&gt;&lt;reason name=&quot;same-tag&quot; value=&quot;您与TA拥有共同的{0}&quot; brief=&quot;拥有共同的{0}&quot;/&gt;&lt;reason name=&quot;belongs-to&quot; value=&quot;你们都属于{0}&quot; brief=&quot;你们都属于{0}&quot;/&gt;&lt;reason name=&quot;near&quot;value=&quot;您与TA位置很近 &quot; brief=&quot;与TA位置很近&quot;/&gt;&lt;/recommend-reason&gt;" />
+	</client-config>
+	<services version="44">
+		<service id="50" name="会员" type="vip" fullname="JuniorVipService"
+			fee="0" desc="会员" max-buddies="1000" max-groupadmin-count="6"
+			max-joingroup-count="22" score-speed="1.1" />
+	</services>
+	<client version="2.0.0.0">
+		<compatible>2.0.0.0</compatible>
+		<date>7/27/2006 6:48:27 PM</date>
+		<pc-live-update value="http://221.130.45.198" />
+	</client>
+</config>

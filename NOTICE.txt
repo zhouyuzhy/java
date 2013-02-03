@@ -1,0 +1,13 @@
+﻿=============================================
+MapleFetion的一些说明
+	solosky <solosky772@qq.com>
+=============================================
+
+关于 MapleFetion -2.5.0 中 java.security.InvalidKeyException: Illegal key size 异常
+----------------------------------------------------------------------
+在maplefetion-2.5.0中，如果出现了 java.security.InvalidKeyException: Illegal key size，
+请复制./lib/policy/目录下面的两个文件到 $JDK_HOME/jre/lib/security并覆盖原来那两个文件(注意备份)，即可。
+这是因为飞信使用AES 256位的密钥加密Credential，在不同国家之间的密码算法的交流，出口的密钥长度是受限制的。
+在国内不支持256位的加密。需要下载JCE无限制密钥长度的策略文件(Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files)才能使用。
+
+目前的解决方案是这样，不够好，但能解决问题，以后会考虑自行实现 AES/CBC/NoPadding 算法。

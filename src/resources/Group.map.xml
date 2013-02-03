@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map class="net.solosky.maplefetion.bean.Group">
+    <field xml="uri" bean="uri" type="java.lang.String" readonly="true"/>
+    <field xml="name" bean="name" type="java.lang.String" readonly="false" />
+    <field xml="introduce" bean="intro" type="java.lang.String" readonly="false" />
+    <field xml="bulletin" bean="bulletin" type="java.lang.String" readonly="false" />
+     <field xml="current-member-count" bean="memberCount" type="java.lang.Integer" readonly="true" />
+</map>

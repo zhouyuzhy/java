@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map class="net.solosky.maplefetion.bean.Member">
+	<field xml="nickname" bean="nickName" type="java.lang.String" readonly="false" />
+	<field xml="iicnickname" bean="iicNickName" type="java.lang.String" readonly="false" />
+	<field xml="identity" bean="identity" type="java.lang.Integer" readonly="false"/>
+	<field xml="t6svcid" bean="t6svcid" type="java.lang.Integer" readonly="false"/>
+</map>

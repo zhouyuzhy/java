@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map class="net.solosky.maplefetion.bean.BuddyExtend">
+	<field xml="nation" bean="nation" type="java.lang.String" readonly="false" />
+	<field xml="city" bean="city" type="java.lang.String" readonly="false" />
+	<field xml="province" bean="province" type="java.lang.String" readonly="false" />
+</map>

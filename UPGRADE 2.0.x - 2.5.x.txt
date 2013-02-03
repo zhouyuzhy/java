@@ -1,0 +1,65 @@
+﻿=============================================
+从MapleFetion-2.0.x 升级到 MapleFetion-2.5.x 的升级指导
+http://maplefetion.googlecode.com
+=============================================
+
+
+由于2.5.x采用了2010的协议，所以有部分API有所改变，请参照这升级指导完成升级。
+
+1.登录方式发生了改变
+
+   a.处理验证的方式：
+
+登录过程中不再出现LoginState为SSI_NEED_VERIFY,VERIFY_FAIL等验证码事件，
+所有的验证码处理都放在了NotifyEventListener的ImageVerifyEvent的通知事件来处理验证码。
+强烈建议登录之前设置一个NotifyEventListener，否则如果不设置，当登录遇到需要处理验证码时，会抛出IllegalStateException;
+在NotifyEventListener处理验证码的部分代码例子如下：
+client.setNotifyEventListener(new NotifyEventListener(){
+	public void fireEvent(NotifyEvent event){
+		if(event.getEventType()==NotifyEventType.IMAGE_VERIFY){
+			ImageVerifyEvent e = (NotifyEventListener) event;
+			OutputStream out = new FileoutputStream(new File("verify.jpg"));
+			out.write(e.getVerifyImage().getImageData());
+			out.close();
+			System.out.println("当前操作需要验证，原因"+e.getVerifyReasion());
+			System.out.print("请输入当前目录下[verify.jpg]下面的验证码:");
+			String code = System.getConsole().readLine();
+			e.getVerifyImage().setVerifyCode(code);
+			client.proccessVerify(e);
+		}
+	}
+});
+
+    b.提供了取消登录的方法 client.cancelLogin()
+如果操作需要用户输入验证码，当用户不在输入验证码后，就需要调用client.cancelLogin()取消登录并释放资源
+当然也可以在登录的过程中任何时候调用取消登录，在在线或者离线状态调用都会抛出异常。
+
+    c.同步登录方法提供了一个超时参数，syncLogin(int presence, long timeout)，可以设置一个登录超时时间。
+如果在给定的时间内没有完成登录就会返回LOGIN_TIMEOUT状态。如果超时客户端会自动释放资源。
+
+
+
+
+2.部分HTTP操作更改为同步的方法。
+所有以http开头的方法如httpSetPortrait(..),httpGetPortrait(..)都是同步的方法，并在无法连接或者连接失败时会跑出IO异常；
+
+
+
+3.删除了一些API，这些API在2010的协议中不在有效。如下：
+void updateBuddyList()
+void getBuddyDetail(FetionBuddy buddy, ActionEventListener listener) [请用retireBuddyInfo(Buddy buddy)]
+void getBuddyDetail(Collection<FetionBuddy> buddyList, ActionEventListener listener)
+VerifyImage fetchVerifyImage() [请用flushVerifyImage(ImageVerifyEvent event)]
+....
+
+
+4.新增了一些API如下：
+void httpSetPortrait(BufferedImage image);
+BufferedImage httpGetPortrait(Buddy buddy);
+void flushVerifyImage(ImageVerifyEvent event);
+void retireBuddyInfo(Buddy buddy);
+....
+
+
+5.删除了一些Bean;
+删除了FetionBuddy和MobileBuddy，所有的好友只需用Buddy表示即可。

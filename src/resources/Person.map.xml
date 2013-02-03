@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map class="net.solosky.maplefetion.bean.Person">
+	<field xml="uri" bean="uri" type="java.lang.String" readonly="true" setter="setUri"/>
+	<field xml="user-id" bean="userId" type="java.lang.Integer" readonly="true" />
+	<field xml="mobile-no" bean="mobile" type="java.lang.Long" readonly="true" />
+</map>
