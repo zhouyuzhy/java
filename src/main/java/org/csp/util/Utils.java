@@ -1,11 +1,11 @@
-package org.test.util;
+package org.csp.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 
-public class PrivateKeyUtils {
+public class Utils {
 
 	public static byte[] readStreamToBytes(InputStream is) throws IOException{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
