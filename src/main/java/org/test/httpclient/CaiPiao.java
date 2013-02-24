@@ -24,11 +24,21 @@ public class CaiPiao {
 	 * @throws HttpException 
 	 */
 	public static void main(String[] args) throws HttpException, IOException {
+		List<Integer> periods = new ArrayList<Integer>();
+		periods.add(14);
+//		periods.add(50);
+//		periods.add(100);
+//		periods.add(300);
+//		periods.add(500);
+//		periods.add(700);
+//		periods.add(1000);
 		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod("http://zx.caipiao.163.com/trend/ssq_historyPeriod.html?periodNumber=100");
-		int status = client.executeMethod(method);
-		if(status == 200){
-			analysisHTML(method.getResponseBodyAsString());
+		for(int i : periods){
+			HttpMethod method = new GetMethod("http://zx.caipiao.163.com/trend/ssq_historyPeriod.html?periodNumber=" + i);
+			int status = client.executeMethod(method);
+			if(status == 200){
+				analysisHTML(method.getResponseBodyAsString());
+			}
 		}
 	}
 	/**
