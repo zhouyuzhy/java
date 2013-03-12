@@ -1,8 +1,0 @@
-*.class
-.project
-.classpath
-
-# Package Files #
-*.jar
-*.war
-*.ear
