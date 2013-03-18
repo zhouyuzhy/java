@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName">
+
+	<bean id="testDAO" class="com.web.foo.dao.TestDAOWithSpring"></bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"  type="org.apache.ibatis.session.SqlSessionFactory"/>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="typeAliases">
+			<list>
+				<value>com.web.foo.model.TestDO</value>
+			</list>
+		</property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mybatis/TestMapping.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+		<constructor-arg  value="com.mysql.jdbc.Driver"  type="String"></constructor-arg>
+		<constructor-arg  value="jdbc:mysql://localhost:3306/test" type="String"></constructor-arg>
+		<constructor-arg  value="root"  type="String"></constructor-arg>
+		<constructor-arg  value="pwroot"  type="String"></constructor-arg>
+	</bean>
+</beans>
