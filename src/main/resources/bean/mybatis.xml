@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
 	default-autowire="byName">
 
-	<bean id="testDAO" class="com.web.foo.dao.TestDAOWithSpring"></bean>
-
+	<bean id="testDAO" name="testDAO" class="com.web.foo.dao.TestDAOWithSpring"></bean>
+	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory"  type="org.apache.ibatis.session.SqlSessionFactory"/>
+		<constructor-arg ref="sqlSessionFactory"
+			type="org.apache.ibatis.session.SqlSessionFactory" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -23,11 +27,37 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
-		<constructor-arg  value="com.mysql.jdbc.Driver"  type="String"></constructor-arg>
-		<constructor-arg  value="jdbc:mysql://localhost:3306/test" type="String"></constructor-arg>
-		<constructor-arg  value="root"  type="String"></constructor-arg>
-		<constructor-arg  value="pwroot"  type="String"></constructor-arg>
+		<constructor-arg value="com.mysql.jdbc.Driver" type="String"></constructor-arg>
+		<constructor-arg value="jdbc:mysql://localhost:3306/test"
+			type="String"></constructor-arg>
+		<constructor-arg value="root" type="String"></constructor-arg>
+		<constructor-arg value="pwroot" type="String"></constructor-arg>
 	</bean>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<tx:advice id="userTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="delete*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException" />
+			<tx:method name="insert*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.RuntimeException" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.Exception" />
+
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="get*" propagation="SUPPORTS" />
+			<tx:method name="select*" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="pc" 
+			expression="execution(public * com.web.foo.dao.*.*(..))" />
+		<aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" />
+		<!-- <aop:advisor pointcut="execution(public * com.web.foo.dao.*.*(..))" advice-ref="userTxAdvice" />  -->
+	</aop:config>
 </beans>

@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.web.foo.model.TestDO;
 
-public class TestDAOWithSpring {
+public class TestDAOWithSpring implements ITestDAO {
 
 	private SqlSession sqlSession;
 
