@@ -4,4 +4,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
 	default-autowire="byName">
 	<bean name="test" class="com.web.foo.beans.Test"></bean>
+	<bean name="testBeanPostProcessor" class="com.web.foo.beans.TestBeanPostProcessor"></bean>
 </beans>
