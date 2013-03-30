@@ -3,6 +3,9 @@ package org.csp.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
+
+import org.bouncycastle.util.encoders.Base64Encoder;
 
 
 public class Utils {
@@ -27,4 +30,28 @@ public class Utils {
 		return true;
 	}
 
+	
+	public static void generateRandomString(byte[] randomBytes){
+		Random random = new Random();
+		random.nextBytes(randomBytes);
+	}
+	
+	public static String base64Encode(byte[] target) throws IOException{
+		Base64Encoder encoder = new Base64Encoder();
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		encoder.encode(target, 0, target.length, baos);
+		String result = baos.toString();
+		baos.close();
+		return result;
+	}
+	
+	public static byte[] base64Decode(String target) throws IOException{
+		Base64Encoder encoder = new Base64Encoder();
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		encoder.decode(target, baos);
+		byte[] result = baos.toByteArray();
+		baos.close();
+		return result;
+	}
+	
 }
