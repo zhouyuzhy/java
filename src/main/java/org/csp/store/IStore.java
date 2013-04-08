@@ -1,6 +1,7 @@
 package org.csp.store;
 import java.util.List;
 
+import org.csp.store.exception.StoreException;
 import org.csp.store.model.Key;
 import org.csp.store.model.Value;
 
@@ -15,14 +16,16 @@ public interface IStore {
 	 * 是否存在指定key的对象
 	 * 
 	 * @param key
+	 * @throws StoreException 
 	 */
-	public boolean exist(Key key);
+	public boolean exist(Key key) throws StoreException;
 
 	/**
 	 * 
 	 * @param key
+	 * @throws StoreException 
 	 */
-	public Value get(Key key);
+	public Value get(Key key) throws StoreException;
 
 	public List<Key> list();
 
@@ -31,7 +34,8 @@ public interface IStore {
 	 * 
 	 * @param key
 	 * @param value
+	 * @throws StoreException 
 	 */
-	public boolean save(Key key, Value value);
+	public boolean save(Key key, Value value) throws StoreException;
 
 }

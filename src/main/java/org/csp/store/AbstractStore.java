@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.csp.store.exception.StoreException;
 import org.csp.store.model.Key;
 import org.csp.store.model.Value;
 
@@ -20,33 +21,36 @@ public abstract class AbstractStore implements IStore {
 	 * 
 	 * @param key
 	 * @param value
+	 * @throws StoreException 
 	 */
-	public boolean save(Key key, Value value){
+	public boolean save(Key key, Value value) throws StoreException{
 		return save(key.toString(), value.getvalue());
 	}
 	
-	protected abstract boolean save(String key, InputStream value);
+	protected abstract boolean save(String key, InputStream value) throws StoreException;
 
 	/**
 	 * 是否存在指定key的对象
 	 * 
 	 * @param key
+	 * @throws StoreException 
 	 */
-	public boolean exist(Key key){
+	public boolean exist(Key key) throws StoreException{
 		return exist(key.toString());
 	}
 	
-	protected abstract boolean exist(String key);
+	protected abstract boolean exist(String key) throws StoreException;
 
 	/**
 	 * 获取指定对象
 	 * @param key 获取对象的Key
+	 * @throws StoreException 
 	 */
-	public Value get(Key key){
+	public Value get(Key key) throws StoreException{
 		return new Value(get(key.toString()));
 	}
 
-	protected abstract InputStream get(String key);
+	protected abstract InputStream get(String key) throws StoreException;
 	/**
 	 * 列举目前存储的所有key
 	 * @return 所有Key

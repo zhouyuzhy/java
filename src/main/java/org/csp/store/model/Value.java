@@ -1,5 +1,6 @@
 package org.csp.store.model;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -11,7 +12,7 @@ public class Value {
 
 	private InputStream value;
 
-	public Value(){
+	public Value() {
 
 	}
 
@@ -19,11 +20,11 @@ public class Value {
 	 * 
 	 * @param value
 	 */
-	public Value(InputStream value){
-
+	public Value(InputStream value) {
+		this.value = value;
 	}
 
-	public InputStream getvalue(){
+	public InputStream getvalue() {
 		return value;
 	}
 
@@ -31,8 +32,18 @@ public class Value {
 	 * 
 	 * @param newVal
 	 */
-	public void setvalue(InputStream newVal){
+	public void setvalue(InputStream newVal) {
 		value = newVal;
+	}
+
+	public byte[] read() throws IOException {
+		try {
+			byte[] result = new byte[this.value.available()];
+			this.value.read(result);
+			return result;
+		} finally {
+			this.value.close();
+		}
 	}
 
 }

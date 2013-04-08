@@ -7,13 +7,14 @@ import org.csp.store.AbstractStore;
 /**
  * @author zhoushaoyu
  * @version 1.0
- * @created 02-四月-2013 21:42:57
+ * @created 02-四月-2013 21:42:56
  */
-public class YoudaoNoteStore extends AbstractStore {
+public class MySQLStore extends AbstractStore {
 
-	public YoudaoNoteStore(){
-
+	
+	public MySQLStore(){
 	}
+	
 
 	@Override
 	protected boolean save(String key, InputStream value) {
@@ -38,6 +39,5 @@ public class YoudaoNoteStore extends AbstractStore {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
