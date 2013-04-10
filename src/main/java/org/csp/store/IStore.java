@@ -1,6 +1,7 @@
 package org.csp.store;
 import java.util.List;
 
+import org.csp.store.exception.LoginFailedException;
 import org.csp.store.exception.StoreException;
 import org.csp.store.model.Key;
 import org.csp.store.model.Value;
@@ -17,17 +18,19 @@ public interface IStore {
 	 * 
 	 * @param key
 	 * @throws StoreException 
+	 * @throws LoginFailedException 
 	 */
-	public boolean exist(Key key) throws StoreException;
+	public boolean exist(Key key) throws StoreException, LoginFailedException;
 
 	/**
 	 * 
 	 * @param key
 	 * @throws StoreException 
+	 * @throws LoginFailedException 
 	 */
-	public Value get(Key key) throws StoreException;
+	public Value get(Key key) throws StoreException, LoginFailedException;
 
-	public List<Key> list();
+	public List<Key> list() throws StoreException, LoginFailedException;
 
 	/**
 	 * ±£¥Ê÷µ£¨¥Ê‘⁄º¥∏≤∏«
@@ -35,7 +38,8 @@ public interface IStore {
 	 * @param key
 	 * @param value
 	 * @throws StoreException 
+	 * @throws LoginFailedException 
 	 */
-	public boolean save(Key key, Value value) throws StoreException;
+	public boolean save(Key key, Value value) throws StoreException, LoginFailedException;
 
 }

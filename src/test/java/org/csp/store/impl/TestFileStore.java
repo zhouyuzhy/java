@@ -12,6 +12,7 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+import org.csp.store.exception.LoginFailedException;
 import org.csp.store.exception.StoreException;
 import org.csp.store.model.Key;
 import org.csp.store.model.Value;
@@ -51,7 +52,7 @@ public class TestFileStore extends TestCase {
 		assertTrue(dir.isDirectory());
 	}
 
-	public void testSave() throws StoreException, IOException {
+	public void testSave() throws StoreException, IOException, LoginFailedException {
 		ByteArrayInputStream bais = new ByteArrayInputStream("test".getBytes());
 		boolean result = fileStore
 				.save(new Key("test", "csp"), new Value(bais));
@@ -67,14 +68,14 @@ public class TestFileStore extends TestCase {
 		is.close();
 	}
 
-	public void testExist() throws IOException, StoreException {
+	public void testExist() throws IOException, StoreException, LoginFailedException {
 		File file = new File(storeDir + "test_csp");
 		assertTrue(file.createNewFile());
 
 		assertTrue(fileStore.exist(new Key("test", "csp")));
 	}
 
-	public void testGet() throws IOException, StoreException {
+	public void testGet() throws IOException, StoreException, LoginFailedException {
 		File file = new File(storeDir + "test_csp");
 		OutputStream os = new FileOutputStream(file);
 		os.write("test".getBytes());
@@ -84,7 +85,7 @@ public class TestFileStore extends TestCase {
 		assertEquals("test", new String(value.read()));
 	}
 
-	public void testListKeys() throws IOException {
+	public void testListKeys() throws IOException, StoreException, LoginFailedException {
 		for (int i = 0; i < 3; i++) {
 			File file = new File(storeDir + "test_csp" + i);
 			file.createNewFile();
