@@ -2,12 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.test.java</groupId>
-	<artifactId>test</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<groupId>org.csp.store</groupId>
+	<artifactId>edm</artifactId>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>test</name>
+	<name>csp-edm</name>
+	<description>Encryption Store Provider encrypt and decrypt module</description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
