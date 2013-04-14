@@ -9,6 +9,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import org.csp.exception.CryptoException;
+
 /**
  * @author zhoushaoyu
  * @version 1.0
@@ -28,7 +30,7 @@ public interface ISymmetricalEncryption extends IEncryption {
 	 * @throws NoSuchPaddingException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public byte[] decrypt(Key key, byte[] target) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException;
+	public byte[] decrypt(Key key, byte[] target)  throws CryptoException;
 
 	public byte[] getIv();
 	
@@ -44,6 +46,6 @@ public interface ISymmetricalEncryption extends IEncryption {
 	 * @throws NoSuchPaddingException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public byte[] encrypt(Key key, byte[] target) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException;
+	public byte[] encrypt(Key key, byte[] target) throws CryptoException;
 
 }

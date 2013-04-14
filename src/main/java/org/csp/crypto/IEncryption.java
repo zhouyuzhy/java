@@ -9,7 +9,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import org.csp.exception.InvalidParamterException;
+import org.csp.exception.CryptoException;
 
 /**
  * @author zhoushaoyu
@@ -20,33 +20,31 @@ public interface IEncryption {
 
 	/**
 	 * 使用Key解密字节数组
-	 * 
 	 * @param key
 	 * @param target
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws InvalidParamterException 
+	 * @return
+	 * @throws CryptoException
 	 */
-	public byte[] decrypt(Key key, byte[] target) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException;
+	public byte[] decrypt(Key key, byte[] target)  throws CryptoException;
 
 	/**
 	 * 使用Key加密字节数组
-	 * 
 	 * @param key
 	 * @param target
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws InvalidKeyException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws InvalidParamterException 
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws InvalidParamterException
 	 */
-	public byte[] encrypt(Key key, byte[] target) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException;
+	public byte[] encrypt(Key key, byte[] target)  throws CryptoException;
 
+	/**
+	 * 获取对称加密的IV向量，非对称返回NULL
+	 * @return
+	 */
 	public byte[] getIv();
 }

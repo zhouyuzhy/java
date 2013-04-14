@@ -1,21 +1,13 @@
 package org.csp.crypto.adapter;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import junit.framework.TestCase;
 
 import org.csp.crypto.adapter.EncryptionAdapter.EncryptionType;
-import org.csp.exception.InvalidParamterException;
+import org.csp.exception.CryptoException;
 import org.test.java.UtilForTest;
 
 public class TestEncryptionAdapter extends TestCase {
@@ -36,7 +28,7 @@ public class TestEncryptionAdapter extends TestCase {
 		pubKey = UtilForTest.generateRsaKey().getPublic();
 	}
 	
-	public void testDecryptBase64AsByte() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException, IOException{
+	public void testDecryptBase64AsByte() throws CryptoException{
 		byte[] text = new byte[]{0x00, 0x01, 0x02};
 		String aesEncrypted = aesEncryption.encryptByteAsBase64(aesKey, text);
 		byte[] ori = aesEncryption.decryptBase64AsByte(aesKey, aesEncrypted);
@@ -47,7 +39,7 @@ public class TestEncryptionAdapter extends TestCase {
 		UtilForTest.assertBytes(text, ori);
 	}
 	
-	public void testDecryptBase64AsString() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException, IOException{
+	public void testDecryptBase64AsString() throws CryptoException{
 		String text = "abc";
 		String aesEncrypted = aesEncryption.encryptStringAsBase64(aesKey, text);
 		String ori = aesEncryption.decryptBase64AsString(aesKey, aesEncrypted);
@@ -58,7 +50,7 @@ public class TestEncryptionAdapter extends TestCase {
 		assertEquals(text, ori);
 	}
 	
-	public void testDecryptByteAsString() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public void testDecryptByteAsString() throws CryptoException {
 		String text = "abc";
 		byte[] aesEncrypted = aesEncryption.encryptStringAsByte(aesKey, text);
 		String ori = aesEncryption.decryptByteAsString(aesKey, aesEncrypted);
@@ -69,7 +61,7 @@ public class TestEncryptionAdapter extends TestCase {
 		assertEquals(text, ori);
 	}
 	
-	public void testDecryptByteAsByte() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public void testDecryptByteAsByte() throws CryptoException {
 		byte[] text = new byte[]{0x00, 0x01, 0x02};
 		byte[] aesEncrypted = aesEncryption.encryptByteAsByte(aesKey, text);
 		byte[] ori = aesEncryption.decryptByteAsByte(aesKey, aesEncrypted);

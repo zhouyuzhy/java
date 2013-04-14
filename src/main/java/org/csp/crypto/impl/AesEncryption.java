@@ -12,6 +12,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 
 import org.csp.crypto.ISymmetricalEncryption;
+import org.csp.exception.CryptoException;
 import org.csp.util.Utils;
 
 /**
@@ -23,36 +24,50 @@ public class AesEncryption implements ISymmetricalEncryption {
 
 	private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
 	private final byte[] iv;
-	
+
 	public AesEncryption(byte[] iv) {
-		if(iv != null){
+		if (iv != null) {
 			this.iv = iv;
-		}else{
+		} else {
 			this.iv = new byte[16];
 			Utils.generateRandomString(this.iv);
 		}
 	}
-	
+
 	public byte[] getIv() {
 		return iv;
 	}
-	
+
 	/**
 	 * 使用Key解密字节数组
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws InvalidAlgorithmParameterException 
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws InvalidAlgorithmParameterException
 	 */
-	public byte[] decrypt(Key key, byte[] target) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
-		Cipher cipher = Cipher.getInstance(ALGORITHM);
-		cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
-		return cipher.doFinal(target);
+	public byte[] decrypt(Key key, byte[] target) throws CryptoException {
+		try {
+			Cipher cipher = Cipher.getInstance(ALGORITHM);
+			cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
+			return cipher.doFinal(target);
+		} catch (NoSuchAlgorithmException e) {
+			throw new CryptoException(e);
+		} catch (NoSuchPaddingException e) {
+			throw new CryptoException(e);
+		} catch (InvalidKeyException e) {
+			throw new CryptoException(e);
+		} catch (IllegalBlockSizeException e) {
+			throw new CryptoException(e);
+		} catch (BadPaddingException e) {
+			throw new CryptoException(e);
+		} catch (InvalidAlgorithmParameterException e) {
+			throw new CryptoException(e);
+		}
 	}
 
 	/**
@@ -60,12 +75,26 @@ public class AesEncryption implements ISymmetricalEncryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws InvalidAlgorithmParameterException 
+	 * @throws InvalidAlgorithmParameterException
 	 */
-	public byte[] encrypt(Key key, byte[] target) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
-		Cipher cipher = Cipher.getInstance(ALGORITHM);
-		cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(iv));
-		return cipher.doFinal(target);
+	public byte[] encrypt(Key key, byte[] target) throws CryptoException {
+		try {
+			Cipher cipher = Cipher.getInstance(ALGORITHM);
+			cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(iv));
+			return cipher.doFinal(target);
+		} catch (NoSuchAlgorithmException e) {
+			throw new CryptoException(e);
+		} catch (NoSuchPaddingException e) {
+			throw new CryptoException(e);
+		} catch (InvalidKeyException e) {
+			throw new CryptoException(e);
+		} catch (IllegalBlockSizeException e) {
+			throw new CryptoException(e);
+		} catch (BadPaddingException e) {
+			throw new CryptoException(e);
+		} catch (InvalidAlgorithmParameterException e) {
+			throw new CryptoException(e);
+		}
 	}
 
 }

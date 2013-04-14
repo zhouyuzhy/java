@@ -1,18 +1,12 @@
 package org.csp.crypto.impl;
 
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.KeyPair;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
 import junit.framework.TestCase;
 
+import org.csp.exception.CryptoException;
 import org.test.java.UtilForTest;
 
 public class TestRsaEncryption extends TestCase{
@@ -30,7 +24,7 @@ public class TestRsaEncryption extends TestCase{
 		pubKey = keyPair.getPublic();
 	}
 	
-	public void testRsaEncrypt() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
+	public void testRsaEncrypt() throws CryptoException {
 		RsaEncryption rsa = new RsaEncryption();
 		byte[] text = new byte[] { 0x00, 0x01, 0x02 };
 		byte[] encrypted = rsa.encrypt(priKey, text);

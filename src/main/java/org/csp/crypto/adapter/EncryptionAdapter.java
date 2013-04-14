@@ -14,7 +14,7 @@ import org.csp.crypto.Encryption;
 import org.csp.crypto.IEncryption;
 import org.csp.crypto.impl.AesEncryption;
 import org.csp.crypto.impl.RsaEncryption;
-import org.csp.exception.InvalidParamterException;
+import org.csp.exception.CryptoException;
 import org.csp.util.Utils;
 
 /**
@@ -27,7 +27,7 @@ public class EncryptionAdapter implements Encryption {
 	public IEncryption encryption;
 
 	public EncryptionAdapter(EncryptionType type) {
-		switch(type){
+		switch (type) {
 		case AES:
 			this.encryption = new AesEncryption(null);
 			break;
@@ -35,7 +35,7 @@ public class EncryptionAdapter implements Encryption {
 			this.encryption = new RsaEncryption();
 			break;
 		default:
-			throw new InvalidParamterException("Not support for " + type);
+			throw new IllegalArgumentException("Not support for " + type);
 		}
 	}
 
@@ -43,34 +43,40 @@ public class EncryptionAdapter implements Encryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws IOException 
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws IOException
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public byte[] decryptBase64AsByte(Key key, String target) throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
-		byte[] toDecrypt = Utils.base64Decode(target);
-		return decryptByteAsByte(key, toDecrypt);
+	public byte[] decryptBase64AsByte(Key key, String target)
+			throws CryptoException {
+		try {
+			byte[] toDecrypt = Utils.base64Decode(target);
+			return decryptByteAsByte(key, toDecrypt);
+		} catch (IOException e) {
+			throw new CryptoException(e);
+		}
 	}
 
 	/**
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws IOException 
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws IOException
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public String decryptBase64AsString(Key key, String target) throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public String decryptBase64AsString(Key key, String target)
+			throws CryptoException {
 		return new String(decryptBase64AsByte(key, target));
 	}
 
@@ -78,15 +84,16 @@ public class EncryptionAdapter implements Encryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public byte[] decryptByteAsByte(Key key, byte[] target) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public byte[] decryptByteAsByte(Key key, byte[] target)
+			throws CryptoException {
 		return this.encryption.decrypt(key, target);
 	}
 
@@ -94,15 +101,16 @@ public class EncryptionAdapter implements Encryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public String decryptByteAsString(Key key, byte[] target) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public String decryptByteAsString(Key key, byte[] target)
+			throws CryptoException {
 		return new String(decryptByteAsByte(key, target));
 	}
 
@@ -110,33 +118,39 @@ public class EncryptionAdapter implements Encryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws IOException 
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws IOException
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public String encryptByteAsBase64(Key key, byte[] target) throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
-		byte[] encrypted = encryptByteAsByte(key, target);
-		return Utils.base64Encode(encrypted);
+	public String encryptByteAsBase64(Key key, byte[] target)
+			throws CryptoException {
+		try {
+			byte[] encrypted = encryptByteAsByte(key, target);
+			return Utils.base64Encode(encrypted);
+		} catch (IOException e) {
+			throw new CryptoException(e);
+		}
 	}
 
 	/**
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public byte[] encryptByteAsByte(Key key, byte[] target) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public byte[] encryptByteAsByte(Key key, byte[] target)
+			throws CryptoException {
 		return this.encryption.encrypt(key, target);
 	}
 
@@ -144,16 +158,17 @@ public class EncryptionAdapter implements Encryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws InvalidParamterException 
-	 * @throws IOException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws InvalidParamterException
+	 * @throws IOException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public String encryptStringAsBase64(Key key, String target) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, IOException, InvalidParamterException{
+	public String encryptStringAsBase64(Key key, String target)
+			throws CryptoException {
 		return encryptByteAsBase64(key, target.getBytes());
 	}
 
@@ -161,15 +176,16 @@ public class EncryptionAdapter implements Encryption {
 	 * 
 	 * @param key
 	 * @param target
-	 * @throws InvalidParamterException 
-	 * @throws InvalidAlgorithmParameterException 
-	 * @throws BadPaddingException 
-	 * @throws IllegalBlockSizeException 
-	 * @throws NoSuchPaddingException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeyException 
+	 * @throws InvalidParamterException
+	 * @throws InvalidAlgorithmParameterException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws NoSuchPaddingException
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
 	 */
-	public byte[] encryptStringAsByte(Key key, String target) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidParamterException{
+	public byte[] encryptStringAsByte(Key key, String target)
+			throws CryptoException {
 		return encryptByteAsByte(key, target.getBytes());
 	}
 
@@ -178,8 +194,8 @@ public class EncryptionAdapter implements Encryption {
 		return this.encryption.getIv();
 	}
 
-	public static enum EncryptionType{
+	public static enum EncryptionType {
 		AES, RSA
 	}
-	
+
 }
