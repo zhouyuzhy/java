@@ -49,7 +49,7 @@ public class BaiduPCSStore extends AbstractStore {
 		return target.replaceAll(Pattern.quote(key), value);
 	}
 
-	public class ConnectionFactory {
+	public static class ConnectionFactory {
 		
 		public ConnectionFactory() {
 		}
