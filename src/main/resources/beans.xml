@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName">
+	<bean name="console" class="org.csp.client.Console">
+		<property name="defaultPublicKeyFile">
+			<value>C:\Users\zhoushaoyu\Desktop\keys\id_rsa.pub</value>
+		</property>
+		<property name="defaultPrivateKeyFile">
+			<value>C:\Users\zhoushaoyu\Desktop\keys\id_rsa</value>
+		</property>
+	</bean>
+	<bean name="storeService"
+		class="org.csp.client.service.AsymmetricEncryptAndStoreServiceImpl"></bean>
+	<bean name="encryption" class="org.csp.crypto.adapter.EncryptionAdapter">
+		<constructor-arg value="RSA"></constructor-arg>
+	</bean>
+	<bean name="store" class="org.csp.store.impl.BaiduPCSStore">
+		<property name="dir">
+			<value>secret_store</value>
+		</property>
+		<property name="authUrl">
+			<value>
+			<![CDATA[
+			http://openapi.baidu.com/oauth/2.0/login_success#expires_in=xxx&access_token=xxx&session_secret=xxx&session_key=xxx&scope=basic+netdisk
+			]]>
+			</value>
+		</property>
+	</bean>
+	<bean name="connectionFactory" class="org.csp.store.impl.BaiduPCSStore.ConnectionFactory"></bean>
+	<bean name="publicKeyPairFactory" class="org.csp.keypair.KeyPairFactoryAdaptor">
+		<constructor-arg>
+			<value>OPENSSH</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value></value>
+		</constructor-arg>
+	</bean>
+	<bean name="privateKeyPairFactory" class="org.csp.keypair.KeyPairFactoryAdaptor">
+		<constructor-arg>
+			<value>PEM</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value></value>
+		</constructor-arg>
+	</bean>
+</beans>
