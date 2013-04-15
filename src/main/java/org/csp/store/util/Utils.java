@@ -2,18 +2,41 @@ package org.csp.store.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.csp.store.exception.Md5Exception;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Output;
+import com.google.gson.Gson;
 
 public class Utils {
 
+	public static void copyStream(InputStream is, OutputStream os) throws IOException{
+		int size = 1024;
+		byte[] temp = new byte[size];
+		int length = 0;
+		while ((length = is.read(temp, 0, size)) != -1) {
+			os.write(temp, 0, length);
+		}
+		is.close();
+		os.close();
+	}
+	
+	public static Map<?, ?> parseFromJson(String json){
+		Gson gson = new Gson();
+		Map<?,?> map = new HashMap<String,Object>();
+		map = gson.fromJson(json, map.getClass());
+		return map;
+	}
+	
 	public static void printBytes(byte[] target) {
 		for (byte t : target) {
 			System.out.print(t + "\t");

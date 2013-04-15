@@ -13,6 +13,7 @@ import java.util.List;
 import org.csp.store.AbstractStore;
 import org.csp.store.exception.StoreException;
 import org.csp.store.exception.StoreKeyNotFoundException;
+import org.csp.store.util.Utils;
 
 /**
  * @author zhoushaoyu
@@ -37,30 +38,26 @@ public class FileStore extends AbstractStore {
 		String fileName = key;
 		OutputStream os = null;
 		File file = new File(this.dir + fileName);
-		byte[] temp = new byte[1024];
-		int length = 0;
 		try {
 			os = new FileOutputStream(file);
-			while ((length = value.read(temp, 0, 1024)) != -1) {
-				os.write(temp, 0, length);
-			}
+			Utils.copyStream(value, os);
 		} catch (IOException e) {
 			throw new StoreException(e);
 		} finally {
-			boolean ioExceptionOccured = false;
+			StoreException exception = null;
 			if (os != null)
 				try {
 					os.close();
 				} catch (IOException e) {
-					ioExceptionOccured = true;
+					exception = new StoreException(e);
 				}
 			try {
 				value.close();
 			} catch (IOException e) {
-				ioExceptionOccured = true;
+				exception = new StoreException(e);
 			}
-			if (ioExceptionOccured)
-				throw new StoreException();
+			if (exception != null)
+				throw exception;
 		}
 		return true;
 	}

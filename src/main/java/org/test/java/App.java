@@ -9,13 +9,8 @@ import java.net.URL;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-import org.csp.store.IStore;
 import org.csp.store.exception.LoginFailedException;
 import org.csp.store.exception.StoreException;
-import org.csp.store.impl.FTPStore;
-import org.csp.store.model.Key;
-import org.csp.store.model.Proxy;
-import org.csp.store.model.Value;
 
 /**
  * Hello world!
@@ -23,16 +18,17 @@ import org.csp.store.model.Value;
  */
 public class App {
 	public static void main(String[] args) throws StoreException, LoginFailedException, IOException {
-		IStore store = new FTPStore("10.120.41.44", 21, "zsy", "1234", ".",
-				new Proxy("127.0.0.1", 1080));
+//		IStore store = new FTPStore("10.120.41.44", 21, "zsy", "1234", ".",
+//				new Proxy("127.0.0.1", 1080));
 		
 //		store.save(new Key("test"), new Value(new ByteArrayInputStream("test".getBytes())));
 //		System.out.println(store.list());
 //		System.out.println(store.exist(new Key("test")));
-		Value value = store.get(new Key("test"));
-		byte[] result = new byte[1024];
-		int length = value.getvalue().read(result, 0, 1024);
-		System.out.println(new String(result, 0, length));
+//		Value value = store.get(new Key("test"));
+//		byte[] result = new byte[1024];
+//		int length = value.getvalue().read(result, 0, 1024);
+//		System.out.println(new String(result, 0, length));
+		
 	}
 
 	protected static void ftpRequest() throws SocketException, IOException {

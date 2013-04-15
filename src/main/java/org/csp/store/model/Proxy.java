@@ -26,6 +26,7 @@ public class Proxy {
 	}
 
 	public void enableProxy(boolean useProxy) {
+		// http://docs.oracle.com/javase/6/docs/technotes/guides/net/proxies.html
 		if (useProxy) {
 			if (host != null)
 				System.setProperty("socksProxyHost", host);

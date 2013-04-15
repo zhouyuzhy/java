@@ -123,12 +123,6 @@ public class FTPStore extends AbstractStore {
 	}
 
 	@Override
-	protected boolean exist(String key) throws StoreException, LoginFailedException {
-		List<String> keys = listKeys();
-		return keys.contains(key);
-	}
-
-	@Override
 	protected InputStream get(String key) throws LoginFailedException, StoreException {
 		connect();
 		changeWorkingDirectory();

@@ -3,6 +3,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.csp.store.AbstractStore;
+import org.csp.store.exception.UnimplementException;
 
 /**
  * @author zhoushaoyu
@@ -18,26 +19,22 @@ public class MySQLStore extends AbstractStore {
 
 	@Override
 	protected boolean save(String key, InputStream value) {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnimplementException("Mysql Store does not implement.");
 	}
 
 	@Override
 	protected boolean exist(String key) {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnimplementException("Mysql Store does not implement.");
 	}
 
 	@Override
 	protected InputStream get(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnimplementException("Mysql Store does not implement.");
 	}
 
 	@Override
 	protected List<String> listKeys() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnimplementException("Mysql Store does not implement.");
 	}
 
 }

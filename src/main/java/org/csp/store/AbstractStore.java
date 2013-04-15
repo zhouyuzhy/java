@@ -42,8 +42,11 @@ public abstract class AbstractStore implements IStore {
 		return exist(key.toString());
 	}
 
-	protected abstract boolean exist(String key) throws StoreException,
-			LoginFailedException;
+	protected boolean exist(String key) throws StoreException,
+			LoginFailedException{
+		List<String> keys = listKeys();
+		return keys.contains(key);
+	}
 
 	/**
 	 * 获取指定对象
