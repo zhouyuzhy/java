@@ -53,12 +53,14 @@ public class TestBaiduPCSStore extends TestCase {
 
 	private void mockGetConnection(String url, String file)
 			throws StoreException, IOException {
+		if(!BaiduPCSStore.DOWNLOAD_URL.equals(url))
+			getConn.disconnect();
 		url = url.replaceAll(Pattern.quote("${access_token}"), "access_token")
 				.replaceAll(Pattern.quote("${dir}"), DIR);
 		if (file != null)
 			url = url.replaceAll(Pattern.quote("${file}"), file);
 		EasyMock.expect(factory.getMethodConnection(url)).andReturn(getConn);
-		getConn.disconnect();
+		
 		EasyMock.expect(getConn.getResponseCode()).andReturn(200);
 	}
 

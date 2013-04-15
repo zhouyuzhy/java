@@ -130,8 +130,6 @@ public class BaiduPCSStore extends AbstractStore {
 			return conn.getInputStream();
 		} catch (IOException e) {
 			throw new StoreException(e);
-		} finally {
-			conn.disconnect();
 		}
 	}
 

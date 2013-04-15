@@ -130,8 +130,6 @@ public class FTPStore extends AbstractStore {
 			return client.retrieveFileStream(key);
 		} catch (IOException e) {
 			throw new StoreException(e);
-		}finally{
-			disconnect();
 		}
 	}
 
