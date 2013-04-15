@@ -9,6 +9,8 @@ import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
+import org.csp.exception.KeyPairException;
+
 /**
  * @author zhoushaoyu
  * @version 1.0
@@ -23,25 +25,38 @@ public class DERKeyPairFactoryImpl extends KeyPairFactoryImpl {
 	/**
 	 * 
 	 * @param key
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeySpecException 
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeySpecException
 	 */
-	public PrivateKey generatePrivateKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException{
+	public PrivateKey generatePrivateKey(byte[] key) throws KeyPairException {
 		KeySpec keySpec = new PKCS8EncodedKeySpec(key);
-		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-		return keyFactory.generatePrivate(keySpec);
+		KeyFactory keyFactory;
+		try {
+			keyFactory = KeyFactory.getInstance("RSA");
+			return keyFactory.generatePrivate(keySpec);
+		} catch (NoSuchAlgorithmException e) {
+			throw new KeyPairException(e);
+		} catch (InvalidKeySpecException e) {
+			throw new KeyPairException(e);
+		}
 	}
 
 	/**
 	 * 
 	 * @param key
-	 * @throws NoSuchAlgorithmException 
-	 * @throws InvalidKeySpecException 
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeySpecException
 	 */
-	public PublicKey generatePublicKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException{
-		KeySpec keySpec = new X509EncodedKeySpec(key);
-		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-		return keyFactory.generatePublic(keySpec);
+	public PublicKey generatePublicKey(byte[] key) throws KeyPairException {
+		try {
+			KeySpec keySpec = new X509EncodedKeySpec(key);
+			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+			return keyFactory.generatePublic(keySpec);
+		} catch (NoSuchAlgorithmException e) {
+			throw new KeyPairException(e);
+		} catch (InvalidKeySpecException e) {
+			throw new KeyPairException(e);
+		}
 	}
 
 }

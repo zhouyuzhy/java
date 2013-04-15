@@ -12,6 +12,7 @@ import javax.crypto.KeyGenerator;
 
 import junit.framework.TestCase;
 
+import org.csp.exception.KeyPairException;
 import org.csp.keypair.impl.KeyPairFactoryImpl;
 import org.csp.keypair.impl.PEMKeyPairFactoryImpl;
 
@@ -48,7 +49,7 @@ public class UtilForTest {
 	}
 	
 	
-	public static KeyPair generateRsaKey() throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public static KeyPair generateRsaKey() throws KeyPairException{
 		KeyPairFactoryImpl kpfi = new PEMKeyPairFactoryImpl("");
 		PrivateKey priKey = kpfi.generatePrivateKey(PEM_KEY.getBytes());
 		PublicKey pubKey = kpfi.generatePublicKey(PEM_KEY.getBytes());

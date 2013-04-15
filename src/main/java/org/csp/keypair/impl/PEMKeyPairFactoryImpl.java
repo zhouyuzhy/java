@@ -11,6 +11,7 @@ import java.security.Security;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMReader;
 import org.bouncycastle.openssl.PasswordFinder;
+import org.csp.exception.KeyPairException;
 
 /**
  * @author zhoushaoyu
@@ -30,7 +31,7 @@ public class PEMKeyPairFactoryImpl extends KeyPairFactoryImpl {
 	 * @param key
 	 * @throws IOException 
 	 */
-	public PrivateKey generatePrivateKey(byte[] key) throws IOException{
+	public PrivateKey generatePrivateKey(byte[] key) throws KeyPairException{
 		KeyPair keyPair = generateKeyPairFromPem(key);
 		return keyPair.getPrivate();
 	}
@@ -40,7 +41,7 @@ public class PEMKeyPairFactoryImpl extends KeyPairFactoryImpl {
 	 * @return
 	 * @throws IOException
 	 */
-	protected KeyPair generateKeyPairFromPem(byte[] key) throws IOException {
+	protected KeyPair generateKeyPairFromPem(byte[] key) throws KeyPairException {
 		ByteArrayInputStream bais = new ByteArrayInputStream(key);
 		PEMReader reader = new PEMReader(new InputStreamReader(bais), new PasswordFinder() {
 			
@@ -49,8 +50,14 @@ public class PEMKeyPairFactoryImpl extends KeyPairFactoryImpl {
 				return PEMKeyPairFactoryImpl.this.password.toCharArray();
 			}
 		});
-		KeyPair keyPair = (KeyPair) reader.readObject();
-		reader.close();
+		KeyPair keyPair;
+		try {
+			keyPair = (KeyPair) reader.readObject();
+			reader.close();
+		} catch (IOException e) {
+			throw new KeyPairException(e);
+		}
+		
 		return keyPair;
 	}
 
@@ -59,7 +66,7 @@ public class PEMKeyPairFactoryImpl extends KeyPairFactoryImpl {
 	 * @param key
 	 * @throws IOException 
 	 */
-	public PublicKey generatePublicKey(byte[] key) throws IOException{
+	public PublicKey generatePublicKey(byte[] key) throws KeyPairException{
 		KeyPair keyPair = generateKeyPairFromPem(key);
 		return keyPair.getPublic();
 	}

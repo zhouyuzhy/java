@@ -9,6 +9,7 @@ import java.security.spec.InvalidKeySpecException;
 
 import junit.framework.TestCase;
 
+import org.csp.exception.KeyPairException;
 import org.csp.keypair.IKeyPairFactory;
 import org.csp.keypair.KeyPairFactoryAdaptor;
 import org.csp.keypair.KeyPairType;
@@ -19,7 +20,7 @@ public class OpensshKeyPairFatoryTest extends TestCase {
 	public static final String KEY = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCW6qYq6m8gVOWLyTB1JGl1aLrJDOCIfErXWNUsNeUXg4UdAtSbkiA+Ta9Nx6oMR4w+OkPbxyivnzkZt1YpmDxrm1z99z81/VyVw+lue+3neRjTgfGMascG+46b7DpEKLXlfS2hwOA+4ooRIeR+LbQZVovy5SP6ZTngskiqcySYqQ== RSA-1024";
 	
 	
-	public void testGeneratePublicKeyWithBase64() throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public void testGeneratePublicKeyWithBase64() throws KeyPairException{
 		IKeyPairFactory ikpf = new KeyPairFactoryAdaptor(KeyPairType.OPENSSH, "");
 		PublicKey key = ikpf.generatePublicKey(KEY.getBytes());
 		assertTrue(key instanceof RSAPublicKey);
@@ -30,7 +31,7 @@ public class OpensshKeyPairFatoryTest extends TestCase {
 				rsaKey.getPublicExponent());
 	}
 	
-	public void testGeneratePublicKeyWithBinary() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException{
+	public void testGeneratePublicKeyWithBinary() throws KeyPairException, IOException{
 		byte[] keyBinary = new BASE64Decoder().decodeBuffer(KEY.split(" ")[1]);
 		IKeyPairFactory ikpf = new KeyPairFactoryAdaptor(KeyPairType.OPENSSH, "");
 		PublicKey key = ikpf.generatePublicKey(keyBinary);

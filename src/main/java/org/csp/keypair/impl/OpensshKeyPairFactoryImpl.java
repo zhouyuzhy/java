@@ -12,6 +12,8 @@ import java.security.spec.KeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Arrays;
 
+import org.csp.exception.KeyPairException;
+
 import sun.misc.BASE64Decoder;
 
 /**
@@ -46,11 +48,15 @@ public class OpensshKeyPairFactoryImpl extends KeyPairFactoryImpl {
 	 * @throws InvalidKeySpecException 
 	 * @throws IOException 
 	 */
-	public PublicKey generatePublicKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public PublicKey generatePublicKey(byte[] key)  throws KeyPairException{
 		String keyStr = new String(key);
 		if(keyStr.startsWith("ssh-rsa")){
 			String keyBase64 = keyStr.split(" ")[1];
-			key = new BASE64Decoder().decodeBuffer(keyBase64);
+			try {
+				key = new BASE64Decoder().decodeBuffer(keyBase64);
+			} catch (IOException e) {
+				throw new KeyPairException(e);
+			}
 		}
 		byte[] sshrsa = new byte[] { 0, 0, 0, 7, 's', 's', 'h', '-', 'r', 's',
 		'a' };
@@ -71,9 +77,16 @@ public class OpensshKeyPairFactoryImpl extends KeyPairFactoryImpl {
 			md_b[i] = key[start_index++];
 		}
 		BigInteger md = new BigInteger(md_b);
-		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-		KeySpec ks = new RSAPublicKeySpec(md, pe);
-		return (RSAPublicKey) keyFactory.generatePublic(ks);
+		KeyFactory keyFactory;
+		try {
+			keyFactory = KeyFactory.getInstance("RSA");
+			KeySpec ks = new RSAPublicKeySpec(md, pe);
+			return (RSAPublicKey) keyFactory.generatePublic(ks);
+		} catch (NoSuchAlgorithmException e) {
+			throw new KeyPairException(e);
+		} catch (InvalidKeySpecException e) {
+			throw new KeyPairException(e);
+		}
 	}
 
 }

@@ -8,6 +8,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 
+import org.csp.exception.KeyPairException;
+
 /**
  * @author zhoushaoyu
  * @version 1.0
@@ -22,7 +24,7 @@ public interface IKeyPairFactory {
 	 * @throws InvalidKeySpecException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public PrivateKey generatePrivateKey(File keyFile) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException;
+	public PrivateKey generatePrivateKey(File keyFile) throws KeyPairException;
 
 	/**
 	 * 
@@ -31,13 +33,13 @@ public interface IKeyPairFactory {
 	 * @throws InvalidKeySpecException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public PrivateKey generatePrivateKey(String keyFilePath) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException;
+	public PrivateKey generatePrivateKey(String keyFilePath) throws KeyPairException;
 
 	/**
 	 * 
 	 * @param key
 	 */
-	public PrivateKey generatePrivateKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public PrivateKey generatePrivateKey(byte[] key) throws KeyPairException;
 
 	/**
 	 * 
@@ -46,32 +48,32 @@ public interface IKeyPairFactory {
 	 * @throws InvalidKeySpecException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public PrivateKey generatePrivateKey(InputStream keyInputStream) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException;
+	public PrivateKey generatePrivateKey(InputStream keyInputStream) throws KeyPairException;
 
 	/**
 	 * 
 	 * @param key
 	 */
-	public PublicKey generatePublicKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public PublicKey generatePublicKey(byte[] key) throws KeyPairException;
 
 	/**
 	 * 
 	 * @param keyInputStream
 	 */
-	public PublicKey generatePublicKey(InputStream keyInputStream) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public PublicKey generatePublicKey(InputStream keyInputStream) throws KeyPairException;
 
 	/**
 	 * 
 	 * @param key
 	 */
-	public PublicKey generatePublicKey(File keyFile) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public PublicKey generatePublicKey(File keyFile) throws KeyPairException;
 
 	
 	/**
 	 * 
 	 * @param key
 	 */
-	public PublicKey generatePublicKey(String keyFilePath) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public PublicKey generatePublicKey(String keyFilePath) throws KeyPairException;
 
 	
 }

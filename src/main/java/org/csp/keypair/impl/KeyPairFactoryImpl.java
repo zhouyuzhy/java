@@ -6,6 +6,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 
+import org.csp.exception.KeyPairException;
+
 /**
  * @author zhoushaoyu
  * @version 1.0
@@ -29,7 +31,7 @@ public class KeyPairFactoryImpl {
 	 * @throws InvalidKeySpecException 
 	 * @throws IOException 
 	 */
-	public PrivateKey generatePrivateKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public PrivateKey generatePrivateKey(byte[] key) throws KeyPairException{
 		return null;
 	}
 
@@ -40,7 +42,7 @@ public class KeyPairFactoryImpl {
 	 * @throws InvalidKeySpecException 
 	 * @throws IOException 
 	 */
-	public PublicKey generatePublicKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public PublicKey generatePublicKey(byte[] key) throws KeyPairException{
 		return null;
 	}
 

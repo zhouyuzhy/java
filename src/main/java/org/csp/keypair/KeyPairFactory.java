@@ -5,6 +5,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 
+import org.csp.exception.KeyPairException;
 import org.csp.keypair.impl.DERKeyPairFactoryImpl;
 import org.csp.keypair.impl.KeyPairFactoryImpl;
 import org.csp.keypair.impl.OpensshKeyPairFactoryImpl;
@@ -45,7 +46,7 @@ public abstract class KeyPairFactory {
 	 * @throws InvalidKeySpecException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public abstract PrivateKey generatePrivateKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public abstract PrivateKey generatePrivateKey(byte[] key) throws KeyPairException;
 
 	/**
 	 * 
@@ -54,6 +55,6 @@ public abstract class KeyPairFactory {
 	 * @throws InvalidKeySpecException 
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public abstract PublicKey generatePublicKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException;
+	public abstract PublicKey generatePublicKey(byte[] key) throws KeyPairException;
 
 }

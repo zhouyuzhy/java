@@ -13,6 +13,8 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 
+import org.csp.exception.KeyPairException;
+
 import junit.framework.TestCase;
 
 public class DERKeyPairFactoryImplTest extends TestCase {
@@ -40,7 +42,7 @@ public class DERKeyPairFactoryImplTest extends TestCase {
 		encodePublicKey  = keyPair.getPublic().getEncoded();
 	}
 	
-	public void testGeneratePrivateKey() throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public void testGeneratePrivateKey() throws KeyPairException{
 		KeyPairFactoryImpl kpfi = new DERKeyPairFactoryImpl("");
 		PrivateKey key = kpfi.generatePrivateKey(encodePrivateKey);
 		assertEquals(privateKey.getAlgorithm(), key.getAlgorithm());
@@ -48,7 +50,7 @@ public class DERKeyPairFactoryImplTest extends TestCase {
 		assertTrue(key instanceof RSAPrivateKey);
 	}
 	
-	public void testGeneratePublicKey() throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public void testGeneratePublicKey() throws KeyPairException{
 		KeyPairFactoryImpl kpfi = new DERKeyPairFactoryImpl("");
 		PublicKey key = kpfi.generatePublicKey(encodePublicKey);
 		assertEquals(publicKey.getAlgorithm(), key.getAlgorithm());

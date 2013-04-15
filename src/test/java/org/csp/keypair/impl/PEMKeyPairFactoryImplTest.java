@@ -9,6 +9,8 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 
+import org.csp.exception.KeyPairException;
+
 import junit.framework.TestCase;
 
 public class PEMKeyPairFactoryImplTest extends TestCase {
@@ -29,7 +31,7 @@ public class PEMKeyPairFactoryImplTest extends TestCase {
 +"97gpoZjznSe4wDezOuJrU8XN9UEtXiXsyjr/GVMxcg==\n"
 +"-----END RSA PRIVATE KEY-----";
 	
-	public void testGeneratePrivateKey() throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public void testGeneratePrivateKey() throws KeyPairException{
 		KeyPairFactoryImpl kpfi = new PEMKeyPairFactoryImpl("");
 		PrivateKey key = kpfi.generatePrivateKey(PEM_KEY.getBytes());
 		assertTrue(key instanceof RSAPrivateKey);
@@ -40,7 +42,7 @@ public class PEMKeyPairFactoryImplTest extends TestCase {
 				rsaKey.getPrivateExponent());
 	}
 	
-	public void testGeneratePublicKey() throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{
+	public void testGeneratePublicKey() throws KeyPairException{
 		KeyPairFactoryImpl kpfi = new PEMKeyPairFactoryImpl("");
 		PublicKey key = kpfi.generatePublicKey(PEM_KEY.getBytes());
 		assertTrue(key instanceof RSAPublicKey);
