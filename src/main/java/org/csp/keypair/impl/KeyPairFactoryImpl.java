@@ -24,6 +24,10 @@ public class KeyPairFactoryImpl {
 		this.password = password;
 	}
 	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	/**
 	 * 
 	 * @param key

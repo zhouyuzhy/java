@@ -38,11 +38,11 @@ public class RsaEncryption implements IAsymmetricEncryption {
 	 * @throws InvalidAlgorithmParameterException
 	 */
 	public byte[] decrypt(Key key, byte[] target) throws CryptoException {
-		if (!(key instanceof PublicKey)) {
+		if (!(key instanceof PrivateKey)) {
 			throw new IllegalArgumentException(
-					"Decryption key should be PublicKey!");
+					"Decryption key should be PrivateKey!");
 		}
-		return decrypt((PublicKey) key, target);
+		return decrypt((PrivateKey) key, target);
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class RsaEncryption implements IAsymmetricEncryption {
 	 * @throws IllegalBlockSizeException
 	 * @throws InvalidAlgorithmParameterException
 	 */
-	public byte[] decrypt(PublicKey key, byte[] target) throws CryptoException {
+	public byte[] decrypt(PrivateKey key, byte[] target) throws CryptoException {
 		Cipher cipher;
 		try {
 			cipher = Cipher.getInstance(ALGORITHM);
@@ -80,7 +80,7 @@ public class RsaEncryption implements IAsymmetricEncryption {
 	 * @param key
 	 * @param target
 	 */
-	public byte[] encrypt(PrivateKey key, byte[] target) throws CryptoException {
+	public byte[] encrypt(PublicKey key, byte[] target) throws CryptoException {
 		try {
 			Cipher cipher = Cipher.getInstance(ALGORITHM);
 			cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -112,11 +112,11 @@ public class RsaEncryption implements IAsymmetricEncryption {
 	 * @throws InvalidKeyException
 	 */
 	public byte[] encrypt(Key key, byte[] target) throws CryptoException {
-		if (!(key instanceof PrivateKey)) {
+		if (!(key instanceof PublicKey)) {
 			throw new IllegalArgumentException(
-					"Decryption key should be PublicKey!");
+					"Encryption key should be PublicKey!");
 		}
-		return encrypt((PrivateKey) key, target);
+		return encrypt((PublicKey) key, target);
 	}
 
 	@Override

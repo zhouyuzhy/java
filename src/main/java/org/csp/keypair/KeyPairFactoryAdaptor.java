@@ -18,8 +18,7 @@ import org.csp.util.Utils;
  * @version 1.0
  * @created 04-ÈýÔÂ-2013 22:56:52
  */
-public class KeyPairFactoryAdaptor extends KeyPairFactory implements
-		IKeyPairFactory {
+public class KeyPairFactoryAdaptor extends KeyPairFactory {
 
 	/**
 	 * 

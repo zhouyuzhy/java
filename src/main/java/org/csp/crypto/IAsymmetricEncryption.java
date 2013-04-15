@@ -29,7 +29,7 @@ public interface IAsymmetricEncryption extends IEncryption {
 	 * @return
 	 * @throws CryptoException
 	 */
-	public byte[] decrypt(PublicKey key, byte[] target)  throws CryptoException;
+	public byte[] decrypt(PrivateKey key, byte[] target)  throws CryptoException;
 
 	/**
 	 * @param key
@@ -46,7 +46,7 @@ public interface IAsymmetricEncryption extends IEncryption {
 	 * @return
 	 * @throws CryptoException
 	 */
-	public byte[] encrypt(PrivateKey key, byte[] target)  throws CryptoException;
+	public byte[] encrypt(PublicKey key, byte[] target)  throws CryptoException;
 
 	/**
 	 * 

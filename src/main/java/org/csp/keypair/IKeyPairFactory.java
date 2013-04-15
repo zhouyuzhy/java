@@ -75,5 +75,9 @@ public interface IKeyPairFactory {
 	 */
 	public PublicKey generatePublicKey(String keyFilePath) throws KeyPairException;
 
-	
+	/**
+	 * 
+	 * @param password
+	 */
+	public void setPassword(String password);
 }

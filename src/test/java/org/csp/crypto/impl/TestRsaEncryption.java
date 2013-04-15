@@ -27,8 +27,8 @@ public class TestRsaEncryption extends TestCase{
 	public void testRsaEncrypt() throws CryptoException {
 		RsaEncryption rsa = new RsaEncryption();
 		byte[] text = new byte[] { 0x00, 0x01, 0x02 };
-		byte[] encrypted = rsa.encrypt(priKey, text);
-		byte[] ori = rsa.decrypt(pubKey, encrypted);
+		byte[] encrypted = rsa.encrypt(pubKey, text);
+		byte[] ori = rsa.decrypt(priKey, encrypted);
 		UtilForTest.assertBytes(text, ori);
 	}
 }

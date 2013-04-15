@@ -16,7 +16,7 @@ import org.csp.keypair.impl.PEMKeyPairFactoryImpl;
  * @version 1.0
  * @created 04-ÈýÔÂ-2013 22:56:48
  */
-public abstract class KeyPairFactory {
+public abstract class KeyPairFactory implements IKeyPairFactory  {
 
 	public KeyPairFactoryImpl keyPairFacotryImpl;
 
@@ -56,5 +56,12 @@ public abstract class KeyPairFactory {
 	 * @throws NoSuchAlgorithmException 
 	 */
 	public abstract PublicKey generatePublicKey(byte[] key) throws KeyPairException;
+	
+	/**
+	 * 
+	 */
+	public void setPassword(String password) {
+		this.keyPairFacotryImpl.setPassword(password);
+	}
 
 }

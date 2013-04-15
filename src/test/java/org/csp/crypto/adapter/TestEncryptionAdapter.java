@@ -34,8 +34,8 @@ public class TestEncryptionAdapter extends TestCase {
 		byte[] ori = aesEncryption.decryptBase64AsByte(aesKey, aesEncrypted);
 		UtilForTest.assertBytes(text, ori);
 		
-		String rsaEncrypted = rsaEncryption.encryptByteAsBase64(priKey, text);
-		ori = rsaEncryption.decryptBase64AsByte(pubKey, rsaEncrypted);
+		String rsaEncrypted = rsaEncryption.encryptByteAsBase64(pubKey, text);
+		ori = rsaEncryption.decryptBase64AsByte(priKey, rsaEncrypted);
 		UtilForTest.assertBytes(text, ori);
 	}
 	
@@ -45,8 +45,8 @@ public class TestEncryptionAdapter extends TestCase {
 		String ori = aesEncryption.decryptBase64AsString(aesKey, aesEncrypted);
 		assertEquals(text, ori);
 		
-		aesEncrypted = rsaEncryption.encryptStringAsBase64(priKey, text);
-		ori = rsaEncryption.decryptBase64AsString(pubKey, aesEncrypted);
+		aesEncrypted = rsaEncryption.encryptStringAsBase64(pubKey, text);
+		ori = rsaEncryption.decryptBase64AsString(priKey, aesEncrypted);
 		assertEquals(text, ori);
 	}
 	
@@ -56,8 +56,8 @@ public class TestEncryptionAdapter extends TestCase {
 		String ori = aesEncryption.decryptByteAsString(aesKey, aesEncrypted);
 		assertEquals(text, ori);
 		
-		byte[] rsaEncrypted = rsaEncryption.encryptStringAsByte(priKey, text);
-		ori = rsaEncryption.decryptByteAsString(pubKey, rsaEncrypted);
+		byte[] rsaEncrypted = rsaEncryption.encryptStringAsByte(pubKey, text);
+		ori = rsaEncryption.decryptByteAsString(priKey, rsaEncrypted);
 		assertEquals(text, ori);
 	}
 	
@@ -67,8 +67,8 @@ public class TestEncryptionAdapter extends TestCase {
 		byte[] ori = aesEncryption.decryptByteAsByte(aesKey, aesEncrypted);
 		UtilForTest.assertBytes(text, ori);
 		
-		byte[] rsaEncrypted = rsaEncryption.encryptByteAsByte(priKey, text);
-		ori = rsaEncryption.decryptByteAsByte(pubKey, rsaEncrypted);
+		byte[] rsaEncrypted = rsaEncryption.encryptByteAsByte(pubKey, text);
+		ori = rsaEncryption.decryptByteAsByte(priKey, rsaEncrypted);
 		UtilForTest.assertBytes(text, ori);
 	}
 }
