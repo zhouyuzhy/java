@@ -9,13 +9,11 @@ import junit.framework.TestCase;
 import org.csp.exception.CryptoException;
 import org.test.java.UtilForTest;
 
-public class TestRsaEncryption extends TestCase{
-	
-	
+public class TestRsaEncryption extends TestCase {
+
 	private PrivateKey priKey;
 	private PublicKey pubKey;
-	
-	
+
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -23,10 +21,21 @@ public class TestRsaEncryption extends TestCase{
 		priKey = keyPair.getPrivate();
 		pubKey = keyPair.getPublic();
 	}
-	
+
 	public void testRsaEncrypt() throws CryptoException {
 		RsaEncryption rsa = new RsaEncryption();
 		byte[] text = new byte[] { 0x00, 0x01, 0x02 };
+		byte[] encrypted = rsa.encrypt(pubKey, text);
+		byte[] ori = rsa.decrypt(priKey, encrypted);
+		UtilForTest.assertBytes(text, ori);
+	}
+
+	public void testRsaEncryptMoreThan128Byte() throws CryptoException {
+		RsaEncryption rsa = new RsaEncryption();
+		int size = 2000;
+		byte[] text = new byte[size];
+		for (int i = 0; i < size; i++)
+			text[i] = (byte)i;
 		byte[] encrypted = rsa.encrypt(pubKey, text);
 		byte[] ori = rsa.decrypt(priKey, encrypted);
 		UtilForTest.assertBytes(text, ori);

@@ -1,12 +1,10 @@
 package org.test.java;
 
-import java.io.IOException;
 import java.security.Key;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.KeyGenerator;
 
@@ -58,7 +56,7 @@ public class UtilForTest {
 	
 	public static void assertBytes(byte[] expected, byte[] result){
 		TestCase.assertNotNull(result);
-		TestCase.assertEquals(result.length, expected.length);
+		TestCase.assertEquals(expected.length, result.length);
 		for(int i=0;i < expected.length;i++){
 			TestCase.assertEquals(expected[i], result[i]);
 		}

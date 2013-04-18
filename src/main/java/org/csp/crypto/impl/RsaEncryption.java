@@ -6,6 +6,8 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -20,7 +22,7 @@ import org.csp.exception.CryptoException;
  * @version 1.0
  * @created 30-三月-2013 10:05:42
  */
-public class RsaEncryption implements IAsymmetricEncryption {
+public class RsaEncryption extends BlockEncryption implements IAsymmetricEncryption {
 
 	private static final String ALGORITHM = "RSA/ECB/PKCS1Padding";
 
@@ -57,22 +59,10 @@ public class RsaEncryption implements IAsymmetricEncryption {
 	 * @throws InvalidAlgorithmParameterException
 	 */
 	public byte[] decrypt(PrivateKey key, byte[] target) throws CryptoException {
-		Cipher cipher;
-		try {
-			cipher = Cipher.getInstance(ALGORITHM);
-			cipher.init(Cipher.DECRYPT_MODE, key);
-			return cipher.doFinal(target);
-		} catch (NoSuchAlgorithmException e) {
-			throw new CryptoException(e);
-		} catch (NoSuchPaddingException e) {
-			throw new CryptoException(e);
-		} catch (InvalidKeyException e) {
-			throw new CryptoException(e);
-		} catch (IllegalBlockSizeException e) {
-			throw new CryptoException(e);
-		} catch (BadPaddingException e) {
-			throw new CryptoException(e);
-		}
+		if (!(key instanceof RSAPrivateKey))
+			throw new IllegalArgumentException("该公钥不支持RSA加密算法。");
+		int blockSize = ((RSAPrivateKey) key).getModulus().bitLength() / 8;
+		return blocksCrypto(key, null, target, blockSize, Cipher.DECRYPT_MODE, ALGORITHM);
 	}
 
 	/**
@@ -81,22 +71,12 @@ public class RsaEncryption implements IAsymmetricEncryption {
 	 * @param target
 	 */
 	public byte[] encrypt(PublicKey key, byte[] target) throws CryptoException {
-		try {
-			Cipher cipher = Cipher.getInstance(ALGORITHM);
-			cipher.init(Cipher.ENCRYPT_MODE, key);
-			return cipher.doFinal(target);
-		} catch (NoSuchAlgorithmException e) {
-			throw new CryptoException(e);
-		} catch (NoSuchPaddingException e) {
-			throw new CryptoException(e);
-		} catch (InvalidKeyException e) {
-			throw new CryptoException(e);
-		} catch (IllegalBlockSizeException e) {
-			throw new CryptoException(e);
-		} catch (BadPaddingException e) {
-			throw new CryptoException(e);
-		}
+		if (!(key instanceof RSAPublicKey))
+			throw new IllegalArgumentException("该公钥不支持RSA加密算法。");
+		int blockSize = ((RSAPublicKey) key).getModulus().bitLength() / 8 - 11; // PKCS1Padding
+		return blocksCrypto(key, null, target, blockSize, Cipher.ENCRYPT_MODE, ALGORITHM);
 	}
+
 
 	/**
 	 * 使用Key加密字节数组
