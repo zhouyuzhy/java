@@ -12,6 +12,7 @@ import org.csp.store.AbstractStore;
 import org.csp.store.exception.LoginFailedException;
 import org.csp.store.exception.StoreException;
 import org.csp.store.model.Proxy;
+import org.csp.store.model.Value;
 
 /**
  * @author zhoushaoyu
@@ -123,11 +124,11 @@ public class FTPStore extends AbstractStore {
 	}
 
 	@Override
-	protected InputStream get(String key) throws LoginFailedException, StoreException {
+	protected Value get(String key) throws LoginFailedException, StoreException {
 		connect();
 		changeWorkingDirectory();
 		try{
-			return client.retrieveFileStream(key);
+			return new Value(client.retrieveFileStream(key));
 		} catch (IOException e) {
 			throw new StoreException(e);
 		}

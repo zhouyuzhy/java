@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import org.csp.store.AbstractStore;
 import org.csp.store.exception.StoreException;
+import org.csp.store.model.Value;
 import org.csp.store.util.Utils;
 
 /**
@@ -86,7 +87,7 @@ public class BaiduPCSStore extends AbstractStore {
 		try {
 			int code = conn.getResponseCode();
 			if (code == 401) {
-				throw new StoreException("認證失敗。請重新授權，" + AUTHORIZE_URL);
+				throw new StoreException("认证失败。请重新授权，" + AUTHORIZE_URL);
 			} else if (code != 200) {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				Utils.copyStream(conn.getInputStream(), baos);
@@ -122,12 +123,13 @@ public class BaiduPCSStore extends AbstractStore {
 	}
 
 	@Override
-	protected InputStream get(String key) throws StoreException {
+	protected Value get(String key) throws StoreException {
 		DOWNLOAD_URL = replacePlaceHolder(DOWNLOAD_URL, "${file}", key);
 		HttpURLConnection conn = connectionFactory.getMethodConnection(DOWNLOAD_URL);
 		auth(conn);
+		int length = conn.getContentLength();
 		try {
-			return conn.getInputStream();
+			return new Value(conn.getInputStream(), length);
 		} catch (IOException e) {
 			throw new StoreException(e);
 		}

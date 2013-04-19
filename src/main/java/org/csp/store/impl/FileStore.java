@@ -13,6 +13,7 @@ import java.util.List;
 import org.csp.store.AbstractStore;
 import org.csp.store.exception.StoreException;
 import org.csp.store.exception.StoreKeyNotFoundException;
+import org.csp.store.model.Value;
 import org.csp.store.util.Utils;
 
 /**
@@ -70,7 +71,7 @@ public class FileStore extends AbstractStore {
 	}
 
 	@Override
-	protected InputStream get(String key) throws StoreException {
+	protected Value get(String key) throws StoreException {
 		if (!exist(key)) {
 			throw new StoreKeyNotFoundException("Not found for key " + key);
 		}
@@ -81,7 +82,7 @@ public class FileStore extends AbstractStore {
 		} catch (FileNotFoundException e) {
 			throw new StoreException(e);
 		}
-		return is;
+		return new Value(is);
 	}
 
 	@Override

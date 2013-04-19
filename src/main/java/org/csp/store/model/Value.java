@@ -1,7 +1,10 @@
 package org.csp.store.model;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import org.csp.store.util.Utils;
 
 /**
  * @author zhoushaoyu
@@ -11,17 +14,27 @@ import java.io.InputStream;
 public class Value {
 
 	private InputStream value;
+	private int length;
 
 	public Value() {
 
 	}
-
+	
 	/**
 	 * 
 	 * @param value
 	 */
 	public Value(InputStream value) {
 		this.value = value;
+	}
+
+	/**
+	 * 
+	 * @param value
+	 */
+	public Value(InputStream value, int length) {
+		this.value = value;
+		this.length = length;
 	}
 
 	public InputStream getvalue() {
@@ -36,13 +49,30 @@ public class Value {
 		value = newVal;
 	}
 
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
 	public byte[] read() throws IOException {
-		try {
-			byte[] result = new byte[this.value.available()];
-			this.value.read(result);
-			return result;
-		} finally {
-			this.value.close();
+		if (value == null)
+			throw new IllegalArgumentException("还没有设置输入流。");
+		byte[] result;
+		if (length != 0) {
+			result = new byte[length];
+			try {
+				this.value.read(result);
+				return result;
+			} finally {
+				this.value.close();
+			}
+		} else {
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			Utils.copyStream(value, os);
+			return os.toByteArray();
 		}
 	}
 

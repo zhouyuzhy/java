@@ -95,6 +95,7 @@ public class TestBaiduPCSStore extends TestCase {
 		byte[] getValue = new byte[] { 0x01, 0x02, 0x11, 0x1f };
 		EasyMock.expect(getConn.getInputStream()).andReturn(
 				new ByteArrayInputStream(getValue));
+		EasyMock.expect(getConn.getContentLength()).andReturn(4);
 		EasyMock.replay(getConn);
 		InputStream is = store.get(new Key("test")).getvalue();
 		assertEquals(4, is.available());

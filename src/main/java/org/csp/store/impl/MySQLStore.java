@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.csp.store.AbstractStore;
 import org.csp.store.exception.UnimplementException;
+import org.csp.store.model.Value;
 
 /**
  * @author zhoushaoyu
@@ -28,7 +29,7 @@ public class MySQLStore extends AbstractStore {
 	}
 
 	@Override
-	protected InputStream get(String key) {
+	protected Value get(String key) {
 		throw new UnimplementException("Mysql Store does not implement.");
 	}
 

@@ -56,10 +56,10 @@ public abstract class AbstractStore implements IStore {
 	 * @throws StoreException
 	 */
 	public Value get(Key key) throws StoreException, LoginFailedException {
-		return new Value(get(key.toString()));
+		return get(key.toString());
 	}
 
-	protected abstract InputStream get(String key) throws StoreException,
+	protected abstract Value get(String key) throws StoreException,
 			LoginFailedException;
 
 	/**
