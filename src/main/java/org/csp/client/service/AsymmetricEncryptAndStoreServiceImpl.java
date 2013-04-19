@@ -55,10 +55,8 @@ public class AsymmetricEncryptAndStoreServiceImpl implements
 			throws ServiceException {
 		try {
 			Value encryptedValue = store.get(new Key(keys));
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			Utils.copyStream(encryptedValue.getvalue(), baos);
 			return this.encryption.decryptBase64AsString(privateKey,
-					new String(baos.toByteArray()));
+					new String(encryptedValue.read()));
 		} catch (CryptoException e) {
 			throw new ServiceException(e);
 		} catch (StoreException e) {

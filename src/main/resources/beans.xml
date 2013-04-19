@@ -5,10 +5,10 @@
 	default-autowire="byName">
 	<bean name="console" class="org.csp.client.Console">
 		<property name="defaultPublicKeyFile">
-			<value>C:\Users\zhoushaoyu\Desktop\keys\id_rsa.pub</value>
+			<value>C:\Users\Administrator\Desktop\keys\id_rsa.pub</value>
 		</property>
 		<property name="defaultPrivateKeyFile">
-			<value>C:\Users\zhoushaoyu\Desktop\keys\id_rsa</value>
+			<value>C:\Users\Administrator\Desktop\keys\id_rsa</value>
 		</property>
 	</bean>
 	<bean name="storeService"
