@@ -8,7 +8,8 @@
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
 	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo">
 	<dubbo:application name="test"/>
-	<dubbo:registry address="zookeeper://192.168.239.145:2181" group="local"/>
+	<dubbo:registry address="zookeeper://123.58.185.59:2181/"/>
 	<dubbo:protocol name="dubbo" port="20880" accesslog="d:/access.log"></dubbo:protocol>
 	<dubbo:annotation/>
+	<dubbo:monitor protocol="registry" />
 </beans>

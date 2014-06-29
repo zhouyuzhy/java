@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.web.foo.service.Consumer;
+import com.web.foo.service.FirstDubboService;
 
 public class Test
 {
