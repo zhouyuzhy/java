@@ -20,8 +20,7 @@ import org.jsoup.select.Elements;
 public class Football
 {
 
-	public static final String COOKIE = "vjuids=-36eaccbd9.13fd8b62a15.0.e1a838ba; ALLYESID4=00130714092738258523247; usertrack=ezq0JFI63VFkTm4qJbtmAg==; NTES_REPLY_NICKNAME=zhouyuzhy%40126.com%7Czhouyuzhy126%7C-4396741636047328574%7C6037906236%7Chttp%3A%2F%2Fmimg.126.net%2Fp%2Fbutter%2F1008031648%2Fimg%2Fface_big.gif%7C%7C1%7C2; pgv_pvi=6712780800; _ntes_nuid=58f255d303d2b7d12cb143a7c655d9d5; _ntes_nnid=58f255d303d2b7d12cb143a7c655d9d5,1402832271270; hasPay=0; locOfHebeiSite=others; ancmt=1; ne_analysis_trace_id=1404131640571; vinfo_n_f_l_n3=1ed5cd37e9f3ce62.1.11.1394935693000.1403786424649.1404131647230; s_n_f_l_n3=1ed5cd37e9f3ce621403790295216; pgr_n_f_l_n3=1ed5cd37e9f3ce62140413164057463; nteslogger_exit_time=1404131647237; JSESSIONID=D8F56F229F031F8A9BAA6A37EC28E3E1.app-1-8010; NTES_SESS=Fuw._i4R1meZp8GGsWvmVW9hCvaeB95zetsezgPJ3NagRqGuuNlbWp5uElKFPhGxpKHVNywXy5kjcNJe6s_M.gZR8693K3MJ.L97lZXU4WQW_3czDszSJ5WWP3ZjgmRA4Cwr4fcRn_mv9pK1LmD20.9HSt.zgYf3G_YqmDo4EQ0braQncatKSo.WV; S_INFO=1404131668|0|#3&100#|zhouyuzhy@126.com#zhoushaoyuzsy#huangjqi@126.com#qsampt@yeah.net; P_INFO=zhouyuzhy@126.com|1404131668|1|other|11&15|zhj&1404131535&exchange#zhj&330100#10#0#0|151496&0|xym_client&caipiao&epay|zhouyuzhy@126.com; NTES_PASSPORT=DTz_tFz_2S_10CDalDSjpa5RlQddzg.Q5yP9rhVuOzs6wkMppI5NvlWph5BDV4MilBqcIgPKgWy483zV9S2pYK67gwhPBmtHrGgdqffIOfwt1A2dVSq50Vrvc; ANTICSRF=99e97e86b2b713c2d82ef3c9e004c792; Futsal_SID=59ffe2c0-6cf2-452c-961d-c7a2090c3910; sv_id=50; vjlast=1373730384.1404131641.11; _ga=GA1.2.80161961.1403615257; AJSTAT_ok_pages=9; AJSTAT_ok_times=10";
-	public static final boolean challenge100 = true;//false即是挑战比在自己前面名次的任意名次
+	public static final String COOKIE = "vjuids=-36eaccbd9.13fd8b62a15.0.e1a838ba; ALLYESID4=00130714092738258523247; usertrack=ezq0JFI63VFkTm4qJbtmAg==; NTES_REPLY_NICKNAME=zhouyuzhy%40126.com%7Czhouyuzhy126%7C-4396741636047328574%7C6037906236%7Chttp%3A%2F%2Fmimg.126.net%2Fp%2Fbutter%2F1008031648%2Fimg%2Fface_big.gif%7C%7C1%7C2; pgv_pvi=6712780800; _ntes_nuid=58f255d303d2b7d12cb143a7c655d9d5; _ntes_nnid=58f255d303d2b7d12cb143a7c655d9d5,1402832271270; hasPay=0; locOfHebeiSite=others; ancmt=1; ne_analysis_trace_id=1404396154120; vinfo_n_f_l_n3=1ed5cd37e9f3ce62.1.11.1394935693000.1403786424649.1404396156827; s_n_f_l_n3=1ed5cd37e9f3ce621403790295216; pgr_n_f_l_n3=1ed5cd37e9f3ce6214043961541236924; nteslogger_exit_time=1404396156836; NTES_SESS=7EB9uMMZPZ309ir0mNo0TntiBB7GNBvpZWEIbg1IO.uOCue88ES.Ffd83So7bjeTfo1NElr6ldpLIE2BxOXHn5QCaxYMoMH2nqY_SQ6cJFKFXMI0ZO0U2d3p_UyZcDQRrewucN.eyTE5JyquVnTIS9LfEcmolEhcedUa7OchBk7zN.1MKR0RlFnFN; S_INFO=1404396162|0|#3&100#|zhouyuzhy@126.com#zhoushaoyuzsy#huangjqi@126.com#qsampt@yeah.net; P_INFO=zhouyuzhy@126.com|1404396162|1|other|11&15|zhj&1404396139&exchange#zhj&330100#10#0#0|151496&0|caipiao&epay|zhouyuzhy@126.com; NTES_PASSPORT=MEocq2YEG96TbD4r4MYFtlwBH5mbsF1vHA9DzRXXsqEUN5kdd6D43FndxD8MOikwF8lX6vI9vnWiNiOb_z3fFnesAUdCSpov1gUDyz81w44oz76wH_mFfZm3X; ANTICSRF=f0bc04bbf3811659571e9d5083254713; Futsal_SID=e294f1b7-039a-435d-a4f8-1fa4ceb3f7b0; sv_id=52; JSESSIONID=A458302BFC2C40F47045C8D82FCD500F.app-1-8010; vjlast=1373730384.1404396145.11; _ga=GA1.2.80161961.1403615257; AJSTAT_ok_pages=4; AJSTAT_ok_times=11";
 
 	/**
 	 * @param args中文
@@ -31,7 +30,6 @@ public class Football
 	 */
 	public static void main(String[] args) throws HttpException, IOException, InterruptedException
 	{
-		HttpClient client = new HttpClient();
 		while (true)
 		{
 			try
@@ -126,7 +124,12 @@ public class Football
 			}
 			is.close();
 			method.releaseConnection();
-			return sb.toString();
+			String result = sb.toString();
+			if(StringUtils.contains(result, "用户未登录"))
+			{
+				throw new IllegalStateException("先抓个cookie过来设置吧,http://2014.163.com/card");
+			}
+			return result;
 		}
 		return "";
 	}
@@ -138,6 +141,8 @@ public class Football
 		{
 			throw new IllegalStateException("都在100名了，没必要打了！！！等一分钟再检测");
 		}
+		String href = "";
+		long minRank = Long.MAX_VALUE;
 		for (Element div : doc.getElementsByAttributeValue("class", "user-team-rank"))
 		{
 			if (!StringUtils.equals(div.tagName(), "div"))
@@ -149,22 +154,20 @@ public class Football
 			{
 				continue;
 			}
-			else if (challenge100 && rank >= 100)
+			if (rank > minRank)
 			{
 				continue;
 			}
-			else if (!challenge100 && (myRank == null || rank >= myRank))
+			if (rank < 100)
 			{
-				if (myRank == null)
-				{
-					System.err.println("my rank is null");
-				}
-				continue;
+				System.out.println("准备挑战:" + rank);
+				return div.nextElementSibling().attr("href").replace("#", "http://a.wc.163.com/game");
 			}
-			System.out.println("准备挑战:" + rank);
-			return div.nextElementSibling().attr("href").replace("#", "http://a.wc.163.com/game");
+
+			href = div.nextElementSibling().attr("href").replace("#", "http://a.wc.163.com/game");
 		}
-		return null;
+		System.out.println("准备挑战:" + minRank);
+		return href;
 	}
 
 	private static Long getMyRank() throws HttpException, IOException
