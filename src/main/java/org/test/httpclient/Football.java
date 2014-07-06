@@ -20,7 +20,11 @@ import org.jsoup.select.Elements;
 public class Football
 {
 
-	public static final String COOKIE = "vjuids=-36eaccbd9.13fd8b62a15.0.e1a838ba; ALLYESID4=00130714092738258523247; usertrack=ezq0JFI63VFkTm4qJbtmAg==; NTES_REPLY_NICKNAME=zhouyuzhy%40126.com%7Czhouyuzhy126%7C-4396741636047328574%7C6037906236%7Chttp%3A%2F%2Fmimg.126.net%2Fp%2Fbutter%2F1008031648%2Fimg%2Fface_big.gif%7C%7C1%7C2; pgv_pvi=6712780800; _ntes_nuid=58f255d303d2b7d12cb143a7c655d9d5; _ntes_nnid=58f255d303d2b7d12cb143a7c655d9d5,1402832271270; hasPay=0; locOfHebeiSite=others; ancmt=1; ne_analysis_trace_id=1404396154120; vinfo_n_f_l_n3=1ed5cd37e9f3ce62.1.11.1394935693000.1403786424649.1404396156827; s_n_f_l_n3=1ed5cd37e9f3ce621403790295216; pgr_n_f_l_n3=1ed5cd37e9f3ce6214043961541236924; nteslogger_exit_time=1404396156836; NTES_SESS=7EB9uMMZPZ309ir0mNo0TntiBB7GNBvpZWEIbg1IO.uOCue88ES.Ffd83So7bjeTfo1NElr6ldpLIE2BxOXHn5QCaxYMoMH2nqY_SQ6cJFKFXMI0ZO0U2d3p_UyZcDQRrewucN.eyTE5JyquVnTIS9LfEcmolEhcedUa7OchBk7zN.1MKR0RlFnFN; S_INFO=1404396162|0|#3&100#|zhouyuzhy@126.com#zhoushaoyuzsy#huangjqi@126.com#qsampt@yeah.net; P_INFO=zhouyuzhy@126.com|1404396162|1|other|11&15|zhj&1404396139&exchange#zhj&330100#10#0#0|151496&0|caipiao&epay|zhouyuzhy@126.com; NTES_PASSPORT=MEocq2YEG96TbD4r4MYFtlwBH5mbsF1vHA9DzRXXsqEUN5kdd6D43FndxD8MOikwF8lX6vI9vnWiNiOb_z3fFnesAUdCSpov1gUDyz81w44oz76wH_mFfZm3X; ANTICSRF=f0bc04bbf3811659571e9d5083254713; Futsal_SID=e294f1b7-039a-435d-a4f8-1fa4ceb3f7b0; sv_id=52; JSESSIONID=A458302BFC2C40F47045C8D82FCD500F.app-1-8010; vjlast=1373730384.1404396145.11; _ga=GA1.2.80161961.1403615257; AJSTAT_ok_pages=4; AJSTAT_ok_times=11";
+	/**进入复仇，查找我的历史里面名次小于该名次的战斗*/
+	private static final int SPECIAL_RANK_FIGHT_MAX = 300;
+	/**当自己名次大于这个的时候进入复仇*/
+	private static final int ENTER_SPECIAL_FIGHT_RANK = 5000;
+	public static final String COOKIE = "vjuids=-36eaccbd9.13fd8b62a15.0.e1a838ba; ALLYESID4=00130714092738258523247; usertrack=ezq0JFI63VFkTm4qJbtmAg==; NTES_REPLY_NICKNAME=zhouyuzhy%40126.com%7Czhouyuzhy126%7C-4396741636047328574%7C6037906236%7Chttp%3A%2F%2Fmimg.126.net%2Fp%2Fbutter%2F1008031648%2Fimg%2Fface_big.gif%7C%7C1%7C2; pgv_pvi=6712780800; _ntes_nuid=58f255d303d2b7d12cb143a7c655d9d5; _ntes_nnid=58f255d303d2b7d12cb143a7c655d9d5,1402832271270; locOfHebeiSite=others; ancmt=1; NTES_PASSPORT=MEocq2YEG96TbD4r4MYFtlwBH5mbsF1vHA9DzRXXsqEUN5kdd6D43FndxD8MOikwF8lX6vI9vnWiNiOb_z3fFnesAUdCSpov1gUDyz81w44oz76wH_mFfZm3X; ANTICSRF=41d85ef5005c2c6000718e29fe1a1e59; NTES_SESS=eUHWNZiV5WmZwbSgnYVyB8FeRfLL2npJxSM96DsxWcUV0LnqqVyPCkgqNyQWaIn6kQMAVTY_Tg2I9Ugbuviq0.M0uX1EQE34bj1FyD_SOCZC7EUBvtBl4gN2FlxvSrDzYn9LSAPnx6VqJ9qKa3B3enbtgpangnOTfxiu0Xyw8K4O4; P_INFO=zhouyuzhy@126.com|1404396162|1|other|11&15|zhj&1404396139&exchange#zhj&330100#10#0#0|151496&0|caipiao&epay|zhouyuzhy@126.com; S_INFO=1404579011|1|#0&80#|zhouyuzhy@126.com#zhoushaoyuzsy#huangjqi@126.com#qsampt@yeah.net; ne_analysis_trace_id=1404638743738; vinfo_n_f_l_n3=1ed5cd37e9f3ce62.1.12.1394935693000.1404400019890.1404638746647; s_n_f_l_n3=1ed5cd37e9f3ce621404638354231; pgr_n_f_l_n3=1ed5cd37e9f3ce6214046387437428820; nteslogger_exit_time=1404638746657; JSESSIONID=FAE680404CEE3C766E33C06C5571C8BF.app-1-8010; Futsal_SID=f686e6a8-ff68-4ee1-855a-d102eead5814; sv_id=52; AJSTAT_ok_pages=109; AJSTAT_ok_times=12; vjlast=1373730384.1404638354.11; _ga=GA1.2.80161961.1403615257";
 
 	/**
 	 * @param args中文
@@ -40,7 +44,7 @@ public class Football
 					System.err.println("no energy");
 					continue;
 				}
-				String sb = httpRequest("http://a.wc.163.com/game/ranking?showHis=true&_=1404131666549");
+				String sb = httpRequest("http://a.wc.163.com/game/ranking?showHis=true&_="+System.currentTimeMillis());
 				analysisHTML(sb);
 				System.out.println("挑战完成");
 			}
@@ -61,7 +65,7 @@ public class Football
 
 	private static Integer tili() throws HttpException, IOException
 	{
-		Document doc = Jsoup.parse(httpRequest("http://a.wc.163.com/history?showHis=true&_=1404138464724"));
+		Document doc = Jsoup.parse(httpRequest("http://a.wc.163.com/history?showHis=true&_="+System.currentTimeMillis()));
 		for (Element ele : doc.getElementsByClass("lifes-txt"))
 		{
 			return NumberUtils.createInteger(String.valueOf((ele.text().charAt(ele.text().length() - 1))));
@@ -82,6 +86,7 @@ public class Football
 		method.setRequestHeader("Accept-Encoding", "gzip,deflate,sdch");
 		method.setRequestHeader("Accept-Language", "zh-CN,zh;q=0.8");
 		method.setRequestHeader("Cookie", COOKIE);
+		method.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 	}
 
 	/**
@@ -125,7 +130,7 @@ public class Football
 			is.close();
 			method.releaseConnection();
 			String result = sb.toString();
-			if(StringUtils.contains(result, "用户未登录"))
+			if (StringUtils.contains(result, "用户未登录"))
 			{
 				throw new IllegalStateException("先抓个cookie过来设置吧,http://2014.163.com/card");
 			}
@@ -140,6 +145,10 @@ public class Football
 		if (myRank != null && myRank < 100)
 		{
 			throw new IllegalStateException("都在100名了，没必要打了！！！等一分钟再检测");
+		}
+		if (myRank != null && myRank >= ENTER_SPECIAL_FIGHT_RANK)
+		{
+			return specialFight(myRank);
 		}
 		String href = "";
 		long minRank = Long.MAX_VALUE;
@@ -168,6 +177,71 @@ public class Football
 		}
 		System.out.println("准备挑战:" + minRank);
 		return href;
+	}
+
+	/**
+	 * 被比赛历史里面的人复仇打到后面的名次了
+	 * @return
+	 * @throws IOException 
+	 * @throws HttpException 
+	 */
+	private static String specialFight(long rank) throws HttpException, IOException
+	{
+		System.err.println("注意被复仇打到" + rank + "名了，尽量手工去完成");
+		int page = 1;
+		while (page < 10)
+		{
+			String historyPage = httpRequest("http://a.wc.163.com/history?showHis=true&_="+System.currentTimeMillis()+"&page=" + page);
+			String url = handleHistoryAndFight(historyPage, rank);
+			if (StringUtils.isNotBlank(url))
+			{
+				return url;
+			}
+			page++;
+		}
+		return null;
+	}
+
+	private static String handleHistoryAndFight(String historyPage, long myRank) throws HttpException, IOException
+	{
+		Document doc = Jsoup.parse(historyPage);
+		Elements eles = doc.getElementsByClass("user-team-name");
+		for (Element ele : eles)
+		{
+			String url = getHistoryRank(ele, myRank);
+			if (StringUtils.isNotBlank(url))
+			{
+				return url;
+			}
+		}
+		return null;
+	}
+
+	private static String getHistoryRank(Element ele, long myRank) throws HttpException, IOException
+	{
+		String url = ele.child(0).attr("href").replace("#", "http://a.wc.163.com");
+		url +="&_="+System.currentTimeMillis();
+		String historyTeamPage = httpRequest(url);
+		Document doc = Jsoup.parse(historyTeamPage);
+		Elements eles = doc.getElementsByClass("battle-history");
+		Long rank = null;
+		for (Element e : eles)
+		{
+			rank = NumberUtils.createLong(e.child(3).getElementsByTag("strong").get(0).text());
+		}
+		if (rank != null && rank < myRank && rank < SPECIAL_RANK_FIGHT_MAX && rank > 0)
+		{
+			System.out.println("准备复仇" + rank + "名次");
+			return getFightUrl(doc);
+		}
+		return null;
+	}
+
+	private static String getFightUrl(Document doc)
+	{
+		Elements battleElements = doc.getElementsByClass("battle-btns");
+		String url = battleElements.get(0).child(0).attr("href").replace("#", "http://a.wc.163.com");
+		return url;
 	}
 
 	private static Long getMyRank() throws HttpException, IOException
