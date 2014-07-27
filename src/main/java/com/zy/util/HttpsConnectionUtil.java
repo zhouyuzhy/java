@@ -60,12 +60,12 @@ public class HttpsConnectionUtil
 
 				public void checkServerTrusted(X509Certificate[] chain, String authType)
 				{
-					//System.out.println("checkServerTrusted");
+					//log.info("checkServerTrusted");
 				}
 
 				public void checkClientTrusted(X509Certificate[] chain, String authType)
 				{
-					//System.out.println("checkClientTrusted");
+					//log.info("checkClientTrusted");
 				}
 			} };
 

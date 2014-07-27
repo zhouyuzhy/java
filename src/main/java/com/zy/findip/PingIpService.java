@@ -12,12 +12,16 @@ import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
+import org.apache.log4j.Logger;
 
 import com.zy.util.JsonUtil;
 
 public abstract class PingIpService
 {
-	ExecutorService executor = Executors.newFixedThreadPool(100);
+	protected Logger log = Logger.getLogger(getClass());
+	ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(100);
 	ExecutorService writeResultExecutor = Executors.newFixedThreadPool(1);
 
 	public void pingProcess(String sourceFile, String outputFilePath) throws IOException
@@ -47,16 +51,18 @@ public abstract class PingIpService
 						}
 						catch (InterruptedException e)
 						{
-							e.printStackTrace();
+							log.fatal(e.getMessage(), e);
 						}
 						catch (IOException e)
 						{
-							e.printStackTrace();
+							log.fatal(e.getMessage(), e);
 						}
 					}
 				});
 
 			}
+			executor.shutdown();
+			writeResultExecutor.shutdown();
 		}
 		finally
 		{
@@ -77,7 +83,7 @@ public abstract class PingIpService
 			{
 				while (true)
 				{
-					System.out.println(queue.size());
+					log.info(queue.size());
 					BufferedWriter bw = null;
 					try
 					{
@@ -87,11 +93,11 @@ public abstract class PingIpService
 					}
 					catch (InterruptedException e)
 					{
-						e.printStackTrace();
+						log.fatal(e.getMessage(), e);
 					}
 					catch (IOException e)
 					{
-						e.printStackTrace();
+						log.fatal(e.getMessage(), e);
 					}
 					finally
 					{
@@ -102,7 +108,7 @@ public abstract class PingIpService
 						}
 						catch (IOException e)
 						{
-							e.printStackTrace();
+							log.fatal(e.getMessage(), e);
 						}
 					}
 				}
@@ -114,7 +120,7 @@ public abstract class PingIpService
 	private void ping(ArrayBlockingQueue<String> queue, String ip) throws IOException, InterruptedException
 	{
 		String code = getCode(ip);
-		System.out.println(code);
+		log.info(code);
 		Process process = Runtime.getRuntime().exec(code);
 		try
 		{
@@ -131,7 +137,7 @@ public abstract class PingIpService
 				return;
 			}
 			result.put("ip", ip);
-			System.out.println(result);
+			log.info(result);
 			queue.put(JsonUtil.serialize(result));
 		}
 		finally

@@ -82,7 +82,7 @@ public class FindIpService
 			{
 				while (true)
 				{
-					System.out.println(queue.size());
+					log.info(queue.size());
 					BufferedWriter bw = null;
 					try
 					{
@@ -92,11 +92,11 @@ public class FindIpService
 					}
 					catch (InterruptedException e)
 					{
-						e.printStackTrace();
+						log.fatal(e.getMessage(), e);
 					}
 					catch (IOException e)
 					{
-						e.printStackTrace();
+						log.fatal(e.getMessage(), e);
 					}
 					finally
 					{
@@ -107,7 +107,7 @@ public class FindIpService
 						}
 						catch (IOException e)
 						{
-							e.printStackTrace();
+							log.fatal(e.getMessage(), e);
 						}
 					}
 				}
@@ -120,7 +120,7 @@ public class FindIpService
 	{
 		try
 		{
-			System.out.println(tempLine);
+			log.info(tempLine);
 			String r = (HttpsConnectionUtil.httpsUrlRequestGet("https://"+tempLine, null, 3000));
 			if(r!=null)
 				queue.put(tempLine);
@@ -131,7 +131,7 @@ public class FindIpService
 		}
 		catch (InterruptedException e)
 		{
-			e.printStackTrace();
+			log.fatal(e.getMessage(), e);
 		}
 	}
 }

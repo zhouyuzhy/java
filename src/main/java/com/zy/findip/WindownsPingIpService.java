@@ -27,7 +27,7 @@ public class WindownsPingIpService extends PingIpService
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			log.fatal(e.getMessage(), e);
 			return null;
 		}
 	}
