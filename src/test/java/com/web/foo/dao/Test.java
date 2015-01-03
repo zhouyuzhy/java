@@ -10,7 +10,7 @@ public class Test
 {
 	public static void main(String[] args) throws InterruptedException
 	{
-		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml", "dubbo_consumer.xml");
 //		FirstDubboService service = (FirstDubboService) ac.getBean("firstDubboServiceImpl");
 //		service.sayHello();
 //		System.out.println("加载完成");

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-	http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.0.xsd"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
-	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo">
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans">
 	<import resource="dubbo.xml"/>
 	<context:component-scan base-package="com.web.foo.service" />
+	
 </beans>

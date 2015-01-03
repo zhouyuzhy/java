@@ -2,15 +2,15 @@ package com.web.foo.service;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.web.foo.dto.TestDto;
 
 @Component
 public class Consumer
 {
-	@Reference(version="1.0", lazy=true)
+	@Autowired
 	private FirstDubboService service;
 	
 	public void test()
