@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  classpath:org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.0.xsd
+	http://code.alibabatech.com/schema/dubbo       classpath:META-INF/dubbo.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo">
+	<dubbo:application name="test"/>
+	<dubbo:registry address="zookeeper://10.5.111.101:2181/" timeout="30000000"/>
+	<dubbo:protocol name="dubbo" port="-1" accesslog="d:/access.log"></dubbo:protocol>
+	<dubbo:annotation/>
+</beans>
