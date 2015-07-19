@@ -8,7 +8,7 @@
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
 	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo">
 	<dubbo:reference interface="com.web.foo.service.FirstDubboService"
-		version="1.0" generic="false" id="firstDubboService" init="false" ></dubbo:reference>
+		version="1.0" generic="false" id="firstDubboService" init="false"  retries="0"></dubbo:reference>
 		<!-- url="dubbo://127.0.0.1:20880/" -->
 		
 </beans>

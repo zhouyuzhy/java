@@ -20,7 +20,7 @@ public class Consumer
 	{
 		TestDto test = new TestDto();
 		test.setList(Arrays.asList(new String[]{"a", "b"}));
-		test.setTest("t");
+		test.setTest("shortCall");
 		service.sayHello(test);
 	}
 }

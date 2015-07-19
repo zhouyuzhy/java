@@ -87,6 +87,21 @@
 			<artifactId>zkclient</artifactId>
 			<version>0.1</version>
 		</dependency>
+		<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.21</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.2</version>
+			</dependency>
 	</dependencies>
 
 	<build>
