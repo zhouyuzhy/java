@@ -78,6 +78,11 @@
 			<version>3.1.0</version>
 		</dependency>
 		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
@@ -99,7 +104,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<profiles>
 		<profile>
 			<id>dev</id>
@@ -133,7 +138,7 @@
 			</properties>
 		</profile>
 	</profiles>
-	
+
 	<build>
 		<finalName>websocket</finalName>
 		<sourceDirectory>src/main/java/</sourceDirectory>
@@ -167,9 +172,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
-				<configuration>
-					<warName>login</warName>
-				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
