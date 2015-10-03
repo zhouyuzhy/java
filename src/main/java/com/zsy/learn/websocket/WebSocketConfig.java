@@ -9,6 +9,16 @@ import javax.websocket.server.ServerEndpointConfig;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+/**
+ * 仅支持TOMCAT 8
+ * @Project websocket
+ * @Description: 
+ * @Company youku
+ * @Create 2015年10月2日下午7:31:07
+ * @author zhoushaoyu
+ * @version 1.0
+ * Copyright (c) 2015 youku, All Rights Reserved.
+ */
 public class WebSocketConfig implements ServerApplicationConfig
 {
 
