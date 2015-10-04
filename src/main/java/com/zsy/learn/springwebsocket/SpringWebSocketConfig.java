@@ -33,6 +33,7 @@ public class SpringWebSocketConfig implements WebSocketConfigurer
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry)
 	{
 		registry.addHandler(myWsHandler(), "/springwsbean/myhandler.htm");
+		registry.addHandler(myWsHandler(), "/bean_sockjs").withSockJS();
 	}
 
 	@Bean

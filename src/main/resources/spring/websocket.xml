@@ -13,6 +13,9 @@
 	<websocket:handlers>
 		<websocket:mapping path="/springwsxml/myhandler.htm" handler="myHandler" />
 	</websocket:handlers>
-
+	<websocket:handlers>
+		<websocket:mapping path="/xml_sockjs" handler="myHandler" />
+		<websocket:sockjs/>
+	</websocket:handlers>
 	<bean id="myHandler" class="com.zsy.learn.springwebsocket.websockethandler.MySpringTextWsHandler" />
 </beans>
