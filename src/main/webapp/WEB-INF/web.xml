@@ -8,10 +8,11 @@
       Servlet and JSP Examples.
     </description>
 	<display-name>Servlet and JSP Examples</display-name>
-
+	
 	<filter>
 		<filter-name>logfilter</filter-name>
 		<filter-class>com.zsy.learn.websocket.filter.LogFilter</filter-class>
+		<async-supported>true</async-supported>
 	</filter>
 
 	<filter-mapping>
@@ -26,6 +27,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/application_context.xml</param-value>
 		</init-param>
+		<async-supported>true</async-supported>
 	</servlet>
 
 	<servlet-mapping>

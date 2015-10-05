@@ -4,6 +4,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.zsy.learn.springwebsocket.constant.SpringWebsocketConstant;
+
 
 /**
  * @Project websocket
@@ -32,6 +34,19 @@ public class MySpringTextWsHandler extends TextWebSocketHandler
 		{
 			session.sendMessage(message);
 		}
+	}
+	
+	/** 
+	 * 方法用途: <br>
+	 * 实现步骤: <br>
+	 * @param session
+	 * @throws Exception   
+	 */
+	@Override
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception
+	{
+		super.afterConnectionEstablished(session);
+		SpringWebsocketConstant.map.put("1", session);
 	}
 	
 }
