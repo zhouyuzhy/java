@@ -22,17 +22,19 @@ import java.util.concurrent.TimeoutException;
 public class LualuService
 {
 
-	public static final String DOWNLOAD_URL = "";
+	public static final String DOWNLOAD_PREFIX = "http://www3.uptorrentfilespacedownhostabc.club/";
 
-	public static final String DOWNLOAD_REFERER = "";
+	public static final String DOWNLOAD_URL = DOWNLOAD_PREFIX+"updowm/down.php";
 
-	private String indexUrl = "";
+	public static final String DOWNLOAD_REFERER = DOWNLOAD_PREFIX+"updowm/file.php/";
 
-	private String hrefPrefix = "";
+	private String hrefPrefix = "http://z3.xm1024p.rocks/pw/";
+
+	private String indexUrl = hrefPrefix+"thread.php?fid=3";
 
 	private String dir = "E:/TDdownload/bak/thasdzxd5er6gh6767dg/";
 
-	private List<String> contents = Arrays.asList();
+	private List<String> contents = Arrays.asList("日本骑兵", "日本騎兵", "灣搭拉咩拉", "❉灣搭❉中文有碼專輯", "骑兵原档");
 
 	public String queryEachContent(String url) throws IOException
 	{
@@ -50,7 +52,9 @@ public class LualuService
 				title.append(element.text());
 			}
 		});
-		if(title.toString().contains("灣搭拉咩拉"))
+		//||title.toString().contains("日本骑兵高清の原档合集")
+		//|| title.toString().contains("骑兵原档")
+		if(title.toString().contains("灣搭拉咩拉") || title.toString().contains("❉灣搭❉中文有碼專輯"))
 		{
 			parseMiela(content, htmlParser);
 		}
@@ -83,12 +87,13 @@ public class LualuService
 						}
 
 					});
-					content.append("<a href=\"file:///" + dir + id + ".torrent\" >" + id + ".torrent" + "</a>").append("<br>\n")
+					content.append(element.outerHtml()).append("<br>\n").append("<br>\n").append("<br>\n").append("<br>\n");
+					content.append("<a download=\""+id+".torrent\" href=\"file:///" + dir + id + ".torrent\" >" + id + ".torrent" + "</a>").append("<br>\n")
 							.append("<br>\n").append("<br>\n").append("<br>\n");
 				}
 				else
 				{
-					content.append(element.outerHtml()).append("<br>\n");
+					content.append(element.outerHtml().replaceAll("\\.th\\.jpg", "\\.jpg")).append("<br>\n");
 				}
 			}
 		});
@@ -103,7 +108,7 @@ public class LualuService
 			public void visit(final Element element)
 			{
 				String html = element.outerHtml();
-				if (html.startsWith("<a href"))
+				if (html.startsWith("<a href") && element.attr("href").equalsIgnoreCase(element.text()))
 				{
 
 					final String id = StringUtils.substringAfterLast(element.attr("href"), "/").replace(".html", "");
@@ -117,11 +122,11 @@ public class LualuService
 						}
 
 					});
-					content.append("<a href=\"file:///" + dir + id + ".torrent\" >" + id + ".torrent" + "</a>").append("<br>\n")
+					content.append("<a download=\"" + id + ".torrent\"  href=\"file:///" + dir + id + ".torrent\" >" + id + ".torrent" + "</a>").append("<br>\n")
 							.append("<br>\n").append("<br>\n").append("<br>\n");
 				} else
 				{
-					content.append(element.outerHtml()).append("<br>\n");
+					content.append(element.outerHtml().replaceAll("\\.th\\.jpg", "\\.jpg")).append("<br>\n");
 				}
 
 			}
@@ -163,7 +168,7 @@ public class LualuService
 			{
 				String url = indexUrl + "&page=" + (page++);
 				HtmlParser htmlParser = new HtmlParser(new HttpRequestImpl().request(new HttpRequestContext(url)).getContent());
-				htmlParser.parser(Arrays.asList("#ajaxtable > tbody:nth-child(2) > tr > td > h3 > a"), new Visitor()
+				htmlParser.parser(Arrays.asList("#ajaxtable > tbody > tr:nth-child(n+9) > td > h3 > a"), new Visitor()
 				{
 
 					@Override
@@ -176,7 +181,11 @@ public class LualuService
 						}
 						int month = Integer.parseInt(title.substring(1, 3));
 						int date = Integer.parseInt(title.substring(4, 6));
-						if (month < requireMonth || date < requireDate)
+						if (month < requireMonth)
+						{
+							throw new IllegalStateException("列表获取完成" + title);
+						}
+						if (month == requireMonth && date < requireDate)
 						{
 							throw new IllegalStateException("列表获取完成" + title);
 						}
@@ -187,7 +196,7 @@ public class LualuService
 
 						for (String content : contents)
 						{
-							if (title.contains(content))
+							if (title.contains(content) && !title.contains("歐美"))
 							{
 								pageList.add(hrefPrefix + element.attr("href"));
 							}
@@ -196,6 +205,7 @@ public class LualuService
 				});
 			} catch (IllegalStateException e)
 			{
+				System.out.println(e.getMessage());
 				break;
 			}
 		}

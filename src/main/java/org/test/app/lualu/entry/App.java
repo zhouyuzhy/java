@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by zhoushaoyu on 2017/1/7.
@@ -18,12 +19,12 @@ public class App
 	public static void main(String[] args) throws IOException
 	{
 		StringBuilder html = new StringBuilder();
-		html.append("<html><head></head><body>");
-		int month = 1;
-		int date = 7;
-		int range = 6;
-		List<String> index = new ArrayList<>();
-		for (int i = 0; i < range - 1; i++)
+		html.append("<html><head></head><body class=\"\">");
+		int month = 11;
+		int date = 24;
+		int range = 7;
+		List<String > index = new ArrayList<>();
+		for (int i = 0; i < range; i++)
 			index.addAll(new LualuService().queryIndex(month, date - i));
 		for (String url : index)
 		{
@@ -35,6 +36,7 @@ public class App
 		html.append("</body></html>");
 		IOUtils.write(html.toString(),
 				new FileOutputStream("E:\\TDdownload\\bak\\thasdzxd5er6gh6767dg\\85182755\\" + month + "_" + date + ".html"));
+		System.out.println("E:\\TDdownload\\bak\\thasdzxd5er6gh6767dg\\85182755\\" + month + "_" + date + ".html");
 		ThreadPoolUtil.shutdown();
 	}
 }

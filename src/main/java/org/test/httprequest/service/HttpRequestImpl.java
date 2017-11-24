@@ -48,6 +48,12 @@ public class HttpRequestImpl implements HttpRequest
 			request.setHeader(entry.getKey(), entry.getValue());
 		}
 
+		StringBuilder cookie = new StringBuilder();
+		for (Entry<String, String> entry : context.getCookies().entrySet())
+		{
+			cookie.append(entry.getKey()).append("=").append(entry.getValue()).append(";");
+		}
+
 		request.connectTimeout(context.getConnectionTimeout());
 		request.userAgent(
 				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36");
@@ -102,6 +108,6 @@ public class HttpRequestImpl implements HttpRequest
 		{
 			form.add(key, params.get(key));
 		}
-		return Request.Post(url).bodyForm(form.build());
+		return Request.Post(url).connectTimeout(60).socketTimeout(600).bodyForm(form.build());
 	}
 }
